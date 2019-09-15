@@ -1,0 +1,42 @@
+[
+	{
+		"family": "CircularStd",
+		"fonts": [
+			{
+				"asset": "fonts/circular_std_book.otf"
+			},
+			{
+				"asset": "fonts/circular_std_medium.otf"
+			},
+			{
+				"asset": "fonts/circular_std_bold.otf"
+			},
+			{
+				"asset": "fonts/circular_std_book_italic.ttf",
+				"style": "italic"
+			},
+			{
+				"asset": "fonts/circular_std_medium_italic.ttf",
+				"style": "italic"
+			}
+		]
+	},
+	{
+		"family": "ProductSans",
+		"fonts": [
+			{
+				"asset": "fonts/googlesans_regular.ttf"
+			},
+			{
+				"asset": "fonts/googlesans_medium.ttf"
+			},
+			{
+				"asset": "fonts/googlesans_bold.ttf"
+			},
+			{
+				"asset": "fonts/googlesans_medium_italic.ttf",
+				"style": "italic"
+			}
+		]
+	}
+]
