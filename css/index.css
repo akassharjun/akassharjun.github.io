@@ -12599,3 +12599,11 @@ time {
 
 time {
   margin-top: auto; }
+
+.pt-10 {
+  padding-top:5rem;
+}
+
+.pt-ski {
+  padding-top:2rem;
+}

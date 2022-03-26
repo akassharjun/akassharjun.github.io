@@ -23,7 +23,7 @@
 
 <body>
 
-    <nav class="navbar px-3 py-3  is-fixed-top" id="home">
+    <nav class="navbar px-3 py-3  is-fixed-top">
         <div class="navbar-brand px-2 py-2">
             <a class="navbar-item" href="_">
                 <img src="img/nav-header.png" alt="Akassharjun's Portfolio">
@@ -48,14 +48,14 @@
                 </a><a class="navbar-item" href="#projects">
                     Projects
                 </a>
-                <a class="navbar-item" href="#contact">
+                <!-- <a class="navbar-item" href="#contact">
                     Contact
-                </a>
+                </a> -->
             </div>
         </div>
     </nav>
 
-    <section class="hero is-medium is-bold">
+    <section class="hero is-medium is-bold pt-10" id="home">
         <div class="hero-body pt-8">
             <div class="container">
                 <div class="columns is-vcentered">
@@ -204,17 +204,11 @@
         <div class="container ">
             <h1 class="title is-3 has-text-centered">Experience</h1>
             <p class="subtitle is-6 has-text-centered">Here are my experiences in the tech world</p>
-            <div class="columns pt-6">
-                <div class="column is-4 is-offset-0 new-company is-flex-desktop-only is-flex-tablet-only">
+            <div class="columns pt-6 level-item">
+                <!-- <div class="column is-4 is-offset-0 new-company is-flex-desktop-only is-flex-tablet-only is-flex">
                     <div class="card">
                         <div class="card-content">
                             <div class="media">
-                                <div class="media-left">
-                                    <figure class="image is-48x48">
-                                        <img src="https://bulma.io/images/placeholders/96x96.png"
-                                            alt="Placeholder image">
-                                    </figure>
-                                </div>
                                 <div class="media-content">
                                     <p class="title is-4"><i>Get Your Company Here</i></p>
                                     <p class="subtitle is-6">Location</p>
@@ -222,15 +216,16 @@
                             </div>
 
                             <div class="content">
-                                I will give do my best to improve the existing systems and work on new systems
+                                I will do all in my power to enhance existing systems and develop new ones.
+                                <br />
                                 <br />
                                 <br />
                                 <time datetime="2016-1-1">Sometime in the future</time>
                             </div>
                         </div>
                     </div>
-                </div>
-                <div class="column is-4 is-offset-0 is-flex-desktop-only is-flex-tablet-only">
+                </div> -->
+                <div class="column is-4 is-offset-0 is-flex-desktop-only is-flex-tablet-only is-flex">
                     <div class="card">
                         <div class="card-content">
                             <div class="media">
@@ -241,7 +236,7 @@
                                 </div>
                                 <div class="media-content">
                                     <p class="title is-4">ThinkSmart Solutions</p>
-                                    <p class="subtitle is-6">Colombo</p>
+                                    <p class="subtitle is-6  pt-5">Colombo, Sri Lanka</p>
                                 </div>
                             </div>
 
@@ -256,7 +251,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="column is-4 is-offset-0 is-flex-desktop-only is-flex-tablet-only">
+                <div class="column is-4 is-offset-0 is-flex-desktop-only is-flex-tablet-only is-flex">
                     <div class="card">
                         <div class="card-content">
                             <div class="media">
@@ -267,7 +262,7 @@
                                 </div>
                                 <div class="media-content">
                                     <p class="title is-4">mBrain Technologies</p>
-                                    <p class="subtitle is-6">Colombo</p>
+                                    <p class="subtitle is-6  pt-5">Colombo, Sri Lanka</p>
                                 </div>
                             </div>
 
@@ -285,6 +280,111 @@
                 </div>
             </div>
 
+        </div>
+    </section>
+
+    <section class="section mt-6" id="projects">
+        <div class="container">
+            <h1 class="title is-3 has-text-centered">Projects</h1>
+            <p class="subtitle is-6 has-text-centered">Here are a few of my work</p>
+            <div class="columns pt-6">
+                <div class="column is-4 is-offset-0 is-flex-desktop-only is-flex-tablet-only">
+                    <div class="card">
+                        <!-- <div class="card-image">
+                            <figure class="image is-3by2">
+                                <img src="https://bulma.io/images/placeholders/1280x960.png" alt="Placeholder image">
+                            </figure>
+                        </div> -->
+                        <div class="card-content">
+                            <div class="media">
+                                <!-- <div class="media-left">
+                                    <figure class="image is-48x48">
+                                        <img src="https://bulma.io/images/placeholders/96x96.png"
+                                            alt="Placeholder image">
+                                    </figure>
+                                </div> -->
+                                <div class="media-content">
+                                    <p class="title is-4">Speculo</p>
+                                    <p class="subtitle is-6">BACKEND</p>
+                                </div>
+                            </div>
+
+                            <div class="content has-text-justified">
+                                Designed & developed the microservices for Speculo. It's an open source platform that
+                                utilizes a DCIGN for indexing faces found in a video
+                                footage, specifically for CCTV surveillance.
+                                <br>
+                                <br>
+                                <time datetime="2016-1-1">#nodejs #typescript #python #opencv</time>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="column is-4 is-offset-0 is-flex-desktop-only is-flex-tablet-only">
+                    <div class="card">
+                        <!-- <div class="card-image">
+                            <figure class="image is-3by2">
+                                <img src="https://bulma.io/images/placeholders/1280x960.png" alt="Placeholder image">
+                            </figure>
+                        </div> -->
+                        <div class="card-content">
+                            <div class="media">
+                                <!-- <div class="media-left">
+                                    <figure class="image is-48x48">
+                                        <img src="https://bulma.io/images/placeholders/96x96.png"
+                                            alt="Placeholder image">
+                                    </figure>
+                                </div> -->
+                                <div class="media-content">
+                                    <p class="title is-4">Charilake</p>
+                                    <p class="subtitle is-6">WEBSITE</p>
+                                </div>
+                            </div>
+
+                            <div class="content has-text-justified">
+                                Completely revamped the design using Figma and created the website for "Charilake
+                                Boutique
+                                Hotel", a hotel in Koggalle, Galle. You can find their website over <a
+                                    href="https://www.charilakehotel.lk/">here</a>.
+                                <br>
+                                <br>
+                                <time datetime="2016-1-1">#bulma #css #html</time>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="column is-4 is-offset-0 is-flex-desktop-only is-flex-tablet-only">
+                    <div class="card">
+                        <!-- <div class="card-image">
+                            <figure class="image is-3by2">
+                                <img src="https://bulma.io/images/placeholders/1280x960.png" alt="Placeholder image">
+                            </figure>
+                        </div> -->
+                        <div class="card-content">
+                            <div class="media">
+                                <!-- <div class="media-left">
+                                    <figure class="image is-48x48">
+                                        <img src="https://bulma.io/images/placeholders/96x96.png"
+                                            alt="Placeholder image">
+                                    </figure>
+                                </div> -->
+                                <div class="media-content">
+                                    <p class="title is-4">Flutter Screen Scaler</p>
+                                    <p class="subtitle is-6">LIBRARY</p>
+                                </div>
+                            </div>
+
+                            <div class="content has-text-justified">
+                                A package to resize your flutter widgets according to the screen size with the use of
+                                percentages. Inspired by how percentages are used in Web Development.
+                                <br>
+                                <br>
+                                <time datetime="2016-1-1">#flutter</time>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
     </section>
 
@@ -379,112 +479,7 @@
         </div>
     </section>
 
-    <section class="section mt-6" id="projects">
-        <div class="container">
-            <h1 class="title is-3 has-text-centered">Projects</h1>
-            <p class="subtitle is-6 has-text-centered">Here are a few of my work</p>
-            <div class="columns pt-6">
-                <div class="column is-4 is-offset-0 is-flex-desktop-only is-flex-tablet-only">
-                    <div class="card">
-                        <div class="card-image">
-                            <figure class="image is-3by2">
-                                <img src="https://bulma.io/images/placeholders/1280x960.png" alt="Placeholder image">
-                            </figure>
-                        </div>
-                        <div class="card-content">
-                            <div class="media">
-                                <div class="media-left">
-                                    <figure class="image is-48x48">
-                                        <img src="https://bulma.io/images/placeholders/96x96.png"
-                                            alt="Placeholder image">
-                                    </figure>
-                                </div>
-                                <div class="media-content">
-                                    <p class="title is-4">Speculo</p>
-                                    <p class="subtitle is-6">BACKEND</p>
-                                </div>
-                            </div>
-
-                            <div class="content has-text-justified">
-                                Designed & developed the microservices for Speculo. It's an open source platform that
-                                utilizes a DCIGN for indexing faces found in a video
-                                footage, specifically for CCTV surveillance.
-                                <br>
-                                <br>
-                                <time datetime="2016-1-1">#nodejs #typescript #python #opencv</time>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="column is-4 is-offset-0 is-flex-desktop-only is-flex-tablet-only">
-                    <div class="card">
-                        <div class="card-image">
-                            <figure class="image is-3by2">
-                                <img src="https://bulma.io/images/placeholders/1280x960.png" alt="Placeholder image">
-                            </figure>
-                        </div>
-                        <div class="card-content">
-                            <div class="media">
-                                <div class="media-left">
-                                    <figure class="image is-48x48">
-                                        <img src="https://bulma.io/images/placeholders/96x96.png"
-                                            alt="Placeholder image">
-                                    </figure>
-                                </div>
-                                <div class="media-content">
-                                    <p class="title is-4">Charilake</p>
-                                    <p class="subtitle is-6">WEBSITE</p>
-                                </div>
-                            </div>
-
-                            <div class="content has-text-justified">
-                                Completely revamped the design using Figma and created the website for "Charilake
-                                Boutique
-                                Hotel", a hotel in Koggalle, Galle. You can find their website over <a
-                                    href="https://www.charilakehotel.lk/">here</a>.
-                                <br>
-                                <br>
-                                <time datetime="2016-1-1">#bulma #css #html</time>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="column is-4 is-offset-0 is-flex-desktop-only is-flex-tablet-only">
-                    <div class="card">
-                        <div class="card-image">
-                            <figure class="image is-3by2">
-                                <img src="https://bulma.io/images/placeholders/1280x960.png" alt="Placeholder image">
-                            </figure>
-                        </div>
-                        <div class="card-content">
-                            <div class="media">
-                                <div class="media-left">
-                                    <figure class="image is-48x48">
-                                        <img src="https://bulma.io/images/placeholders/96x96.png"
-                                            alt="Placeholder image">
-                                    </figure>
-                                </div>
-                                <div class="media-content">
-                                    <p class="title is-4">Flutter Screen Scaler</p>
-                                    <p class="subtitle is-6">LIBRARY</p>
-                                </div>
-                            </div>
-
-                            <div class="content has-text-justified">
-                                A package to resize your flutter widgets according to the screen size with the use of
-                                percentages. Inspired by how percentages are used in Web Development.
-                                <br>
-                                <br>
-                                <time datetime="2016-1-1">#flutter</time>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <section class="section" id="contact">
+    <!-- <section class="section" id="contact">
         <div class="container">
             <h1 class="title is-3 has-text-centered">Contact Info</h1>
             <p class="subtitle is-6 has-text-centered">Reach out to me!</p>
@@ -562,23 +557,11 @@
 
             </div>
         </div>
-    </section>
+    </section> -->
 
-    <footer class="footer py-6">
+    <footer class="footer py-6 pt-10 mt-6">
         <div class="content has-text-centered" style="font-family: DM Mono; color: white; ">
             <div class="columns has-text-centered is-centered">
-                <div class="column is-narrow">
-                    <div class="mx-2">
-                        <a href="https://www.facebook.com/akassharjun" class="has-text-white">
-                            <p class="heading">Facebook</p>
-                            <p class="title pt-1">
-                                <span class="icon is-medium">
-                                    <i class="devicon-facebook-plain colored"></i>
-                                </span>
-                            </p>
-                        </a>
-                    </div>
-                </div>
                 <div class="column is-narrow">
                     <a class="has-text-white" href="https://www.linkedin.com/in/akassharjun/">
                         <div class="mx-2">
