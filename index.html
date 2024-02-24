@@ -2,16 +2,16 @@
 <html lang="en">
 
 <head>
-    <meta charset="utf-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta charset="utf-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1"/>
     <title>Akassharjun's Portfolio</title>
-    <link rel="stylesheet" href="css/index.css" />
+    <link rel="stylesheet" href="css/index.css"/>
     <!-- ICONS CSS -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/devicons/devicon@master/devicon.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css"
-        integrity="sha512-+4zCK9k+qNFUR5X+cKL9EIR+ZOhtIloNl9GIKS57V1MyNsYpYcUrUeQc9vNfzsWfV28IaLL3i96P9sdNyeRssA=="
-        crossorigin="anonymous" />
+          integrity="sha512-+4zCK9k+qNFUR5X+cKL9EIR+ZOhtIloNl9GIKS57V1MyNsYpYcUrUeQc9vNfzsWfV28IaLL3i96P9sdNyeRssA=="
+          crossorigin="anonymous"/>
 
     <!-- FAVICON -->
     <link rel="apple-touch-icon" sizes="57x57" href="./img/favicon/android-chrome-192x192.png">
@@ -23,613 +23,674 @@
 
 <body>
 
-    <nav class="navbar px-3 py-3  is-fixed-top">
-        <div class="navbar-brand px-2 py-2">
-            <a class="navbar-item" href="_">
-                <img src="img/nav-header.png" alt="Akassharjun's Portfolio">
+<nav class="navbar px-3 py-3  is-fixed-top">
+    <div class="navbar-brand px-2 py-2">
+        <a class="navbar-item" href="_">
+            <img src="img/nav-header.png" alt="Akassharjun's Portfolio">
+        </a>
+        <div class="navbar-burger burger" data-target="navbarExampleTransparentExample">
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
+    </div>
+
+    <div class="navbar-menu px-5 py-3" style="font-family: DM Mono; color: white; ">
+        <div class="navbar-end">
+            <a class="navbar-item" href="#home">
+                <span>Home</span>
             </a>
-            <div class="navbar-burger burger" data-target="navbarExampleTransparentExample">
-                <span></span>
-                <span></span>
-                <span></span>
-            </div>
+            <a class="navbar-item" href="#skills">
+                Skills
+            </a>
+            <a class="navbar-item" href="#experience">
+                Experience
+            </a><a class="navbar-item" href="#projects">
+            Projects
+        </a>
+            <!-- <a class="navbar-item" href="#contact">
+                Contact
+            </a> -->
         </div>
+    </div>
+</nav>
 
-        <div class="navbar-menu px-5 py-3" style="font-family: DM Mono; color: white; ">
-            <div class="navbar-end">
-                <a class="navbar-item" href="#home">
-                    <span>Home</span>
-                </a>
-                <a class="navbar-item" href="#skills">
-                    Skills
-                </a>
-                <a class="navbar-item" href="#experience">
-                    Experience
-                </a><a class="navbar-item" href="#projects">
-                    Projects
-                </a>
-                <!-- <a class="navbar-item" href="#contact">
-                    Contact
-                </a> -->
-            </div>
-        </div>
-    </nav>
-
-    <section class="hero is-medium is-bold pt-10" id="home">
-        <div class="hero-body pt-8">
-            <div class="container">
-                <div class="columns is-vcentered">
-                    <div class="column is-4 is-offset-1">
-                        <h1 class="title is-1 is-3-mobile">
-                            Hello there!
-                        </h1>
-                        <h2 class="subtitle has-text-justified">
-                            I am Akassharjun Shanmugarajah, a 2021 IIT grad seeking part-time backend developer roles in
-                            Colombo. I'm also up for side gigs, so feel free to contact me!
-                        </h2>
-                        <form method="get" action="asset/Resume - Akassharjun Shanmugarajah.pdf">
-                            <button class="button is-primary">
-                                VIEW RESUME
-                            </button>
-                        </form>
-                    </div>
-
-                    <div class="column is-4 is-offset-2">
-                        <figure class="image is-768x768">
-                            <img class="overlay-purple" src="img/hero-image.png">
-                        </figure>
-                    </div>
+<section class="hero is-medium is-bold pt-10" id="home">
+    <div class="hero-body pt-8">
+        <div class="container">
+            <div class="columns is-vcentered">
+                <div class="column is-4 is-offset-1">
+                    <h1 class="title is-1 is-3-mobile">
+                        Hello there!
+                    </h1>
+                    <h2 class="subtitle has-text-justified">
+                        I am Akassharjun Shanmugarajah, a software engineer with 2+ years of experience who is
+                        passionate
+                        about building software solutions and specialises in back-end technologies.
+                        In my spare time, I enjoy researching cutting-edge technology and designing user interfaces.
+                    </h2>
+                    <form method="get" action="asset/akassh-cv.pdf">
+                        <button class="button is-primary">
+                            VIEW RESUME
+                        </button>
+                    </form>
                 </div>
 
+                <div class="column is-4 is-offset-2">
+                    <figure class="image is-768x768">
+                        <img class="overlay-purple" src="img/hero-image.png">
+                    </figure>
+                </div>
             </div>
+
         </div>
-    </section>
+    </div>
+</section>
 
-    <section class="section pt-8" id="skills">
-        <div class="container">
-            <h1 class="title is-3 has-text-centered">Skills</h1>
-            <p class="subtitle is-6 has-text-centered">Here are some of my technical skills</p>
+<section class="section pt-8" id="skills">
+    <div class="container">
+        <h1 class="title is-3 has-text-centered">Skills</h1>
+        <p class="subtitle is-6 has-text-centered">Here are some of my technical skills</p>
 
-            <!-- FIRST ROW -->
-            <nav class="level pt-6 is-mobile" style="font-family: DM Mono, monospace;color:white;">
-                <div class="level-item has-text-centered">
-                    <div>
-                        <p class="heading">NodeJS</p>
-                        <p class="title pt-1">
+        <!-- FIRST ROW -->
+        <nav class="level pt-6 is-mobile" style="font-family: DM Mono, monospace;color:white;">
+            <div class="level-item has-text-centered">
+                <div>
+                    <p class="heading">NodeJS</p>
+                    <p class="title pt-1">
                             <span class="icon is-large">
                                 <i class="devicon-nodejs-plain colored"></i>
                             </span>
-                        </p>
-                    </div>
+                    </p>
                 </div>
-                <div class="level-item has-text-centered">
-                    <div>
-                        <p class="heading">Golang</p>
-                        <p class="title pt-1">
+            </div>
+            <div class="level-item has-text-centered">
+                <div>
+                    <p class="heading">Golang</p>
+                    <p class="title pt-1">
                             <span class="icon is-large">
                                 <i class="devicon-go-plain"></i>
                             </span>
-                        </p>
-                    </div>
+                    </p>
                 </div>
-                <div class="level-item has-text-centered">
-                    <div>
-                        <p class="heading">Android</p>
-                        <p class="title pt-1">
+            </div>
+            <div class="level-item has-text-centered">
+                <div>
+                    <p class="heading">JavaScript</p>
+                    <p class="title pt-1">
                             <span class="icon is-large">
-                                <i class="devicon-android-plain colored"></i>
+                                <i class="devicon-javascript-plain colored"></i>
                             </span>
-                        </p>
-                    </div>
+                    </p>
                 </div>
-                <div class="level-item has-text-centered">
-                    <div>
-                        <p class="heading">Java</p>
-                        <p class="title pt-1">
+            </div>
+            <div class="level-item has-text-centered">
+                <div>
+                    <p class="heading">Java</p>
+                    <p class="title pt-1">
                             <span class="icon is-large">
                                 <i class="devicon-java-plain colored"></i>
                             </span>
-                        </p>
-                    </div>
+                    </p>
                 </div>
-                <div class="level-item has-text-centered">
-                    <div>
-                        <p class="heading">Python</p>
-                        <p class="title pt-1">
+            </div>
+            <div class="level-item has-text-centered">
+                <div>
+                    <p class="heading">Python</p>
+                    <p class="title pt-1">
                             <span class="icon is-large">
                                 <i class="devicon-python-plain colored"></i>
                             </span>
-                        </p>
-                    </div>
+                    </p>
                 </div>
-            </nav>
+            </div>
+        </nav>
 
-            <!-- SECOND ROW -->
-            <nav class="level pt-6 is-mobile" style="font-family: DM Mono, monospace;color:white;">
-                <div class="level-item has-text-centered">
-                    <div>
-                        <p class="heading">Git</p>
-                        <p class="title pt-1">
+        <!-- SECOND ROW -->
+        <nav class="level pt-6 is-mobile" style="font-family: DM Mono, monospace;color:white;">
+            <div class="level-item has-text-centered">
+                <div>
+                    <p class="heading">gRPC</p>
+                    <p class="title pt-1">
+                            <span class="icon is-large">
+                                <i class="devicon-grpc-plain colored"></i>
+                            </span>
+                    </p>
+                </div>
+            </div>
+            <div class="level-item has-text-centered">
+                <div>
+                    <p class="heading">GraphQL</p>
+                    <p class="title pt-1">
+                            <span class="icon is-large">
+                                <i class="devicon-graphql-plain colored"></i>
+                            </span>
+                    </p>
+                </div>
+            </div>
+            <div class="level-item has-text-centered">
+                <div>
+                    <p class="heading">Flutter</p>
+                    <p class="title pt-1">
+                            <span class="icon is-large">
+<i class="devicon-flutter-plain colored"></i>
+                            </span>
+                    </p>
+                </div>
+            </div>
+            <div class="level-item has-text-centered">
+                <div>
+                    <p class="heading">Rabbit MQ</p>
+                    <p class="title pt-1">
+                            <span class="icon is-large">
+                                <i class="devicon-rabbitmq-original colored"></i>
+                            </span>
+                    </p>
+                </div>
+            </div>
+            <div class="level-item has-text-centered">
+                <div>
+                    <p class="heading">Redis</p>
+                    <p class="title pt-1">
+                            <span class="icon is-large">
+                                <i class="devicon-redis-plain colored"></i>
+                            </span>
+                    </p>
+                </div>
+            </div>
+        </nav>
+
+        <!-- THIRD ROW -->
+        <nav class="level pt-6 is-mobile" style="font-family: DM Mono, monospace;color:white;">
+            <div class="level-item has-text-centered">
+                <div>
+                    <p class="heading">Git</p>
+                    <p class="title pt-1">
                             <span class="icon is-large">
                                 <i class="devicon-git-plain colored"></i>
                             </span>
-                        </p>
-                    </div>
+                    </p>
                 </div>
-                <div class="level-item has-text-centered">
-                    <div>
-                        <p class="heading">Mongo DB</p>
-                        <p class="title pt-1">
+            </div>
+            <div class="level-item has-text-centered">
+                <div>
+                    <p class="heading">Mongo DB</p>
+                    <p class="title pt-1">
                             <span class="icon is-large">
                                 <i class="devicon-mongodb-plain colored"></i>
                             </span>
-                        </p>
-                    </div>
+                    </p>
                 </div>
-                <div class="level-item has-text-centered">
-                    <div>
-                        <p class="heading">MYSQL</p>
-                        <p class="title pt-1">
+            </div>
+            <div class="level-item has-text-centered">
+                <div>
+                    <p class="heading">MySQL</p>
+                    <p class="title pt-1">
                             <span class="icon is-large">
                                 <i class="devicon-mysql-plain colored"></i>
                             </span>
-                        </p>
-                    </div>
+                    </p>
                 </div>
-                <div class="level-item has-text-centered">
-                    <div>
-                        <p class="heading">HTML</p>
-                        <p class="title pt-1">
+            </div>
+            <div class="level-item has-text-centered">
+                <div>
+                    <p class="heading">HTML</p>
+                    <p class="title pt-1">
                             <span class="icon is-large">
                                 <i class="devicon-html5-plain colored"></i>
                             </span>
-                        </p>
-                    </div>
+                    </p>
                 </div>
-                <div class="level-item has-text-centered">
-                    <div>
-                        <p class="heading">CSS</p>
-                        <p class="title pt-1">
+            </div>
+            <div class="level-item has-text-centered">
+                <div>
+                    <p class="heading">CSS</p>
+                    <p class="title pt-1">
                             <span class="icon is-large">
                                 <i class="devicon-css3-plain colored"></i>
                             </span>
-                        </p>
+                    </p>
+                </div>
+            </div>
+        </nav>
+    </div>
+</section>
+
+<section class="section mt-6" id="experience">
+    <div class="container ">
+        <h1 class="title is-3 has-text-centered">Experience</h1>
+        <p class="subtitle is-6 has-text-centered">Here are my experiences in the tech world</p>
+        <div class="columns pt-6 level-item">
+            <div class="column is-4 is-offset-0 new-company is-flex-desktop-only is-flex-tablet-only is-flex">
+                <div class="card">
+                    <div class="card-content">
+                        <div class="media">
+                            <div class="media-left">
+                                <figure class="image is-48x48">
+                                    <img src="./img/work-3.jpeg" alt="Placeholder image">
+                                </figure>
+                            </div>
+                            <div class="media-content">
+                                <p class="title is-4">Circles.Life</p>
+                                <p class="subtitle is-6  pt-5">Colombo, Sri Lanka</p>
+                            </div>
+                        </div>
+
+                        <div class="content">
+                            Working as a Back‐end Engineer, responsible for the upkeep of Telco microservices and development of new product items.
+                            <br/>
+                            <br/>
+                            <br/>
+                            <time datetime="2016-1-1">Sometime in the future</time>
+                        </div>
                     </div>
                 </div>
-            </nav>
+            </div>
+            <div class="column is-4 is-offset-0 is-flex-desktop-only is-flex-tablet-only is-flex">
+                <div class="card">
+                    <div class="card-content">
+                        <div class="media">
+                            <div class="media-left">
+                                <figure class="image is-48x48">
+                                    <img src="./img/work-2.png" alt="Placeholder image">
+                                </figure>
+                            </div>
+                            <div class="media-content">
+                                <p class="title is-4">ThinkSmart Solutions</p>
+                                <p class="subtitle is-6  pt-5">Colombo, Sri Lanka</p>
+                            </div>
+                        </div>
+
+                        <div class="content">
+                            Maintained the backend services of the flagship product EatMealFirst. (EMF)
+                            <!--                            <a>@bulmaio</a>.-->
+                            <!--                            <a href="#">#css</a> <a href="#">#responsive</a>-->
+                            <br/>
+                            <br/>
+                            <time datetime="2016-1-1">Jun 2020 - Present</time>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="column is-4 is-offset-0 is-flex-desktop-only is-flex-tablet-only is-flex">
+                <div class="card">
+                    <div class="card-content">
+                        <div class="media">
+                            <div class="media-left">
+                                <figure class="image is-48x48">
+                                    <img src="./img/work-1.png" alt="Placeholder image">
+                                </figure>
+                            </div>
+                            <div class="media-content">
+                                <p class="title is-4">mBrain Technologies</p>
+                                <p class="subtitle is-6  pt-5">Colombo, Sri Lanka</p>
+                            </div>
+                        </div>
+
+                        <div class="content">
+                            Developed mobile applications in Android (Java) & RESTful API services using JAX-RS &
+                            Glassfish
+                            <!--                            <a>@bulmaio</a>.-->
+                            <!--                            <a href="#">#css</a> <a href="#">#responsive</a>-->
+                            <br/>
+                            <br/>
+                            <time datetime="2016-1-1">Aug 2018 - Dec 2018, 5 months</time>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
-    </section>
 
-    <section class="section mt-6" id="experience">
-        <div class="container ">
-            <h1 class="title is-3 has-text-centered">Experience</h1>
-            <p class="subtitle is-6 has-text-centered">Here are my experiences in the tech world</p>
-            <div class="columns pt-6 level-item">
-                <!-- <div class="column is-4 is-offset-0 new-company is-flex-desktop-only is-flex-tablet-only is-flex">
-                    <div class="card">
-                        <div class="card-content">
-                            <div class="media">
-                                <div class="media-content">
-                                    <p class="title is-4"><i>Get Your Company Here</i></p>
-                                    <p class="subtitle is-6">Location</p>
-                                </div>
+    </div>
+</section>
+
+<section class="section mt-6" id="projects">
+    <div class="container">
+        <h1 class="title is-3 has-text-centered">Projects</h1>
+        <p class="subtitle is-6 has-text-centered">Here are a few of my work</p>
+        <div class="columns pt-6">
+            <div class="column is-4 is-offset-0 is-flex-desktop-only is-flex-tablet-only">
+                <div class="card">
+                    <!-- <div class="card-image">
+                        <figure class="image is-3by2">
+                            <img src="https://bulma.io/images/placeholders/1280x960.png" alt="Placeholder image">
+                        </figure>
+                    </div> -->
+                    <div class="card-content">
+                        <div class="media">
+                            <!-- <div class="media-left">
+                                <figure class="image is-48x48">
+                                    <img src="https://bulma.io/images/placeholders/96x96.png"
+                                        alt="Placeholder image">
+                                </figure>
+                            </div> -->
+                            <div class="media-content">
+                                <p class="title is-4">Speculo</p>
+                                <p class="subtitle is-6">BACKEND</p>
                             </div>
+                        </div>
 
-                            <div class="content">
-                                I will do all in my power to enhance existing systems and develop new ones.
-                                <br />
-                                <br />
-                                <br />
-                                <time datetime="2016-1-1">Sometime in the future</time>
+                        <div class="content has-text-justified">
+                            Designed & developed the microservices for Speculo. It's an open source platform that
+                            utilizes a DCIGN for indexing faces found in a video
+                            footage, specifically for CCTV surveillance.
+                            <br>
+                            <br>
+                            <time datetime="2016-1-1">#nodejs #typescript #python #opencv</time>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="column is-4 is-offset-0 is-flex-desktop-only is-flex-tablet-only">
+                <div class="card">
+                    <!-- <div class="card-image">
+                        <figure class="image is-3by2">
+                            <img src="https://bulma.io/images/placeholders/1280x960.png" alt="Placeholder image">
+                        </figure>
+                    </div> -->
+                    <div class="card-content">
+                        <div class="media">
+                            <!-- <div class="media-left">
+                                <figure class="image is-48x48">
+                                    <img src="https://bulma.io/images/placeholders/96x96.png"
+                                        alt="Placeholder image">
+                                </figure>
+                            </div> -->
+                            <div class="media-content">
+                                <p class="title is-4">Charilake</p>
+                                <p class="subtitle is-6">WEBSITE</p>
+                            </div>
+                        </div>
+
+                        <div class="content has-text-justified">
+                            Completely revamped the design using Figma and created the website for "Charilake
+                            Boutique
+                            Hotel", a hotel in Koggalle, Galle. You can find their website over <a
+                                href="https://www.charilakehotel.lk/">here</a>.
+                            <br>
+                            <br>
+                            <time datetime="2016-1-1">#bulma #css #html</time>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="column is-4 is-offset-0 is-flex-desktop-only is-flex-tablet-only">
+                <div class="card">
+                    <!-- <div class="card-image">
+                        <figure class="image is-3by2">
+                            <img src="https://bulma.io/images/placeholders/1280x960.png" alt="Placeholder image">
+                        </figure>
+                    </div> -->
+                    <div class="card-content">
+                        <div class="media">
+                            <!-- <div class="media-left">
+                                <figure class="image is-48x48">
+                                    <img src="https://bulma.io/images/placeholders/96x96.png"
+                                        alt="Placeholder image">
+                                </figure>
+                            </div> -->
+                            <div class="media-content">
+                                <p class="title is-4">Flutter Screen Scaler</p>
+                                <p class="subtitle is-6">LIBRARY</p>
+                            </div>
+                        </div>
+
+                        <div class="content has-text-justified">
+                            A package to resize your flutter widgets according to the screen size with the use of
+                            percentages. Inspired by how percentages are used in Web Development.
+                            <br>
+                            <br>
+                            <time datetime="2016-1-1">#flutter</time>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="section mt-6">
+    <div class="container ">
+        <h1 class="title is-3 has-text-centered">Clubs & Societies</h1>
+        <p class="subtitle is-6 has-text-centered">Here are my experiences managing and being part of a clubs</p>
+        <div class="columns pt-6">
+            <div class="column is-4 is-offset-0 is-flex-desktop-only is-flex-tablet-only">
+                <div class="card">
+                    <div class="card-content">
+                        <div class="media">
+                            <div class="media-left">
+                                <figure class="image is-48x48">
+                                    <img src="./img/ieeecs.png" alt="IEEECS">
+                                </figure>
+                            </div>
+                            <div class="media-content">
+                                <p class="title is-4">IEEE Computer Society</p>
+                                <p class="subtitle is-6">Chairperson</p>
+                            </div>
+                        </div>
+
+                        <div class="content">
+                            Organized CodeRally - a free-for-all online hackathon which hones your ability to think
+                            by
+                            solving various tasks provided.
+                            <br/>
+                            <br/>
+                            <time datetime="2016-1-1">Sept 2019 - Sept 2020, 1 year</time>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="column is-4 is-offset-0 is-flex-desktop-only is-flex-tablet-only">
+                <div class="card">
+                    <div class="card-content">
+                        <div class="media">
+                            <div class="media-left">
+                                <figure class="image is-48x48">
+                                    <img src="./img/mozilla.jpeg" alt="Placeholder image">
+                                </figure>
+                            </div>
+                            <div class="media-content">
+                                <p class="title is-4">Mozilla Campus Club of IIT</p>
+                                <p class="subtitle is-6">Student Director</p>
+                            </div>
+                        </div>
+
+                        <div class="content">
+                            Assisted in planning & organizing various events such as Flutter Workshop & AR/VR
+                            Workshop
+                            in the Campus club.
+                            <!--                            <a>@bulmaio</a>.-->
+                            <!--                            <a href="#">#css</a> <a href="#">#responsive</a>-->
+                            <br/>
+                            <br/>
+                            <time datetime="2016-1-1">Jan 2020 - Oct 2020, 9 months</time>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="column is-4 is-offset-0 is-flex-desktop-only is-flex-tablet-only">
+                <div class="card">
+                    <div class="card-content">
+                        <div class="media">
+                            <div class="media-left">
+                                <figure class="image is-48x48">
+                                    <img src="./img/rotaract.jpg" alt="Placeholder image">
+                                </figure>
+                            </div>
+                            <div class="media-content">
+                                <p class="title is-4">Rotaract Club of IIT</p>
+                                <p class="subtitle is-6">IT Director</p>
+                            </div>
+                        </div>
+
+                        <div class="content">
+                            Developed a website for the IIT Game Festival 2019 using WordPress and an app for Hotdog
+                            Showdown 2019/2020 using Android (Java)
+                            <!--                            <a>@bulmaio</a>.-->
+                            <!--                            <a href="#">#css</a> <a href="#">#responsive</a>-->
+                            <br/>
+                            <br/>
+                            <time datetime="2016-1-1">Jun 2019 - Sept 2019, 4 months</time>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</section>
+
+<!-- <section class="section" id="contact">
+    <div class="container">
+        <h1 class="title is-3 has-text-centered">Contact Info</h1>
+        <p class="subtitle is-6 has-text-centered">Reach out to me!</p>
+        <div class="columns is-centered pt-6">
+            <div class="column is-6">
+                <div class="columns">
+                    <div class="column">
+                        <div class="field">
+                            <label class="label">Full Name</label>
+                            <div class="control">
+                                <input class="input" type="text" placeholder="Enter your full name" />
                             </div>
                         </div>
                     </div>
-                </div> -->
-                <div class="column is-4 is-offset-0 is-flex-desktop-only is-flex-tablet-only is-flex">
-                    <div class="card">
-                        <div class="card-content">
-                            <div class="media">
-                                <div class="media-left">
-                                    <figure class="image is-48x48">
-                                        <img src="./img/work-2.png" alt="Placeholder image">
-                                    </figure>
-                                </div>
-                                <div class="media-content">
-                                    <p class="title is-4">ThinkSmart Solutions</p>
-                                    <p class="subtitle is-6  pt-5">Colombo, Sri Lanka</p>
-                                </div>
-                            </div>
-
-                            <div class="content">
-                                Maintained the backend services of the flagship product EatMealFirst. (EMF)
-                                <!--                            <a>@bulmaio</a>.-->
-                                <!--                            <a href="#">#css</a> <a href="#">#responsive</a>-->
-                                <br />
-                                <br />
-                                <time datetime="2016-1-1">Jun 2020 - Present</time>
+                    <div class="column">
+                        <div class="field">
+                            <label class="label">Email</label>
+                            <div class="control">
+                                <input class="input is-danger" type="email"
+                                    placeholder="Enter your email address" />
                             </div>
                         </div>
                     </div>
                 </div>
-                <div class="column is-4 is-offset-0 is-flex-desktop-only is-flex-tablet-only is-flex">
-                    <div class="card">
-                        <div class="card-content">
-                            <div class="media">
-                                <div class="media-left">
-                                    <figure class="image is-48x48">
-                                        <img src="./img/work-1.png" alt="Placeholder image">
-                                    </figure>
-                                </div>
-                                <div class="media-content">
-                                    <p class="title is-4">mBrain Technologies</p>
-                                    <p class="subtitle is-6  pt-5">Colombo, Sri Lanka</p>
-                                </div>
-                            </div>
 
-                            <div class="content">
-                                Developed mobile applications in Android (Java) & RESTful API services using JAX-RS &
-                                Glassfish
-                                <!--                            <a>@bulmaio</a>.-->
-                                <!--                            <a href="#">#css</a> <a href="#">#responsive</a>-->
-                                <br />
-                                <br />
-                                <time datetime="2016-1-1">Aug 2018 - Dec 2018, 5 months</time>
+                <div class="columns">
+                    <div class="column">
+                        <div class="field">
+                            <label class="label">Phone Number</label>
+                            <div class="control">
+                                <input class="input" type="text" placeholder="Enter your phone number" />
                             </div>
+                        </div>
+                    </div>
+                    <div class="column">
+                        <div class="field">
+                            <label class="label">Subject</label>
+                            <div class="control">
+                                <input class="input" type="text" placeholder="Enter the subject" />
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="field">
+                    <label class="label">Message</label>
+                    <div class="control">
+                        <textarea class="textarea" placeholder="Your message"></textarea>
+                    </div>
+                </div>
+
+                <div class="field has-text-centered pt-2">
+                    <div class="control">
+                        <label class="checkbox">
+                            <input type="checkbox" />
+                            I agree to the
+                            <a href="#" class="is-primary">terms and conditions</a>
+                        </label>
+                    </div>
+                </div>
+
+                <div class="column has-text-centered is-centered pt-4">
+                    <div class="field is-grouped has-text-centered has-addons-centered has-addons">
+                        <div class="control has-text-centered">
+                            <button class="button is-primary has-text-centered">Submit</button>
+                        </div>
+                        <div class="control has-text-centered">
+                            <button class="button is-light has-text-centered">
+                                Cancel
+                            </button>
                         </div>
                     </div>
                 </div>
             </div>
 
         </div>
-    </section>
+    </div>
+</section> -->
 
-    <section class="section mt-6" id="projects">
-        <div class="container">
-            <h1 class="title is-3 has-text-centered">Projects</h1>
-            <p class="subtitle is-6 has-text-centered">Here are a few of my work</p>
-            <div class="columns pt-6">
-                <div class="column is-4 is-offset-0 is-flex-desktop-only is-flex-tablet-only">
-                    <div class="card">
-                        <!-- <div class="card-image">
-                            <figure class="image is-3by2">
-                                <img src="https://bulma.io/images/placeholders/1280x960.png" alt="Placeholder image">
-                            </figure>
-                        </div> -->
-                        <div class="card-content">
-                            <div class="media">
-                                <!-- <div class="media-left">
-                                    <figure class="image is-48x48">
-                                        <img src="https://bulma.io/images/placeholders/96x96.png"
-                                            alt="Placeholder image">
-                                    </figure>
-                                </div> -->
-                                <div class="media-content">
-                                    <p class="title is-4">Speculo</p>
-                                    <p class="subtitle is-6">BACKEND</p>
-                                </div>
-                            </div>
+<footer class="footer py-6 pt-10 mt-6">
+    <div class="content has-text-centered" style="font-family: DM Mono; color: white; ">
+        <div class="columns has-text-centered is-centered">
+            <div class="column is-narrow">
+                <a class="has-text-white" href="https://www.linkedin.com/in/akassharjun/">
+                    <div class="mx-2">
 
-                            <div class="content has-text-justified">
-                                Designed & developed the microservices for Speculo. It's an open source platform that
-                                utilizes a DCIGN for indexing faces found in a video
-                                footage, specifically for CCTV surveillance.
-                                <br>
-                                <br>
-                                <time datetime="2016-1-1">#nodejs #typescript #python #opencv</time>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="column is-4 is-offset-0 is-flex-desktop-only is-flex-tablet-only">
-                    <div class="card">
-                        <!-- <div class="card-image">
-                            <figure class="image is-3by2">
-                                <img src="https://bulma.io/images/placeholders/1280x960.png" alt="Placeholder image">
-                            </figure>
-                        </div> -->
-                        <div class="card-content">
-                            <div class="media">
-                                <!-- <div class="media-left">
-                                    <figure class="image is-48x48">
-                                        <img src="https://bulma.io/images/placeholders/96x96.png"
-                                            alt="Placeholder image">
-                                    </figure>
-                                </div> -->
-                                <div class="media-content">
-                                    <p class="title is-4">Charilake</p>
-                                    <p class="subtitle is-6">WEBSITE</p>
-                                </div>
-                            </div>
-
-                            <div class="content has-text-justified">
-                                Completely revamped the design using Figma and created the website for "Charilake
-                                Boutique
-                                Hotel", a hotel in Koggalle, Galle. You can find their website over <a
-                                    href="https://www.charilakehotel.lk/">here</a>.
-                                <br>
-                                <br>
-                                <time datetime="2016-1-1">#bulma #css #html</time>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="column is-4 is-offset-0 is-flex-desktop-only is-flex-tablet-only">
-                    <div class="card">
-                        <!-- <div class="card-image">
-                            <figure class="image is-3by2">
-                                <img src="https://bulma.io/images/placeholders/1280x960.png" alt="Placeholder image">
-                            </figure>
-                        </div> -->
-                        <div class="card-content">
-                            <div class="media">
-                                <!-- <div class="media-left">
-                                    <figure class="image is-48x48">
-                                        <img src="https://bulma.io/images/placeholders/96x96.png"
-                                            alt="Placeholder image">
-                                    </figure>
-                                </div> -->
-                                <div class="media-content">
-                                    <p class="title is-4">Flutter Screen Scaler</p>
-                                    <p class="subtitle is-6">LIBRARY</p>
-                                </div>
-                            </div>
-
-                            <div class="content has-text-justified">
-                                A package to resize your flutter widgets according to the screen size with the use of
-                                percentages. Inspired by how percentages are used in Web Development.
-                                <br>
-                                <br>
-                                <time datetime="2016-1-1">#flutter</time>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <section class="section mt-6">
-        <div class="container ">
-            <h1 class="title is-3 has-text-centered">Clubs & Societies</h1>
-            <p class="subtitle is-6 has-text-centered">Here are my experiences managing and being part of a clubs</p>
-            <div class="columns pt-6">
-                <div class="column is-4 is-offset-0 is-flex-desktop-only is-flex-tablet-only">
-                    <div class="card">
-                        <div class="card-content">
-                            <div class="media">
-                                <div class="media-left">
-                                    <figure class="image is-48x48">
-                                        <img src="./img/ieeecs.png" alt="IEEECS">
-                                    </figure>
-                                </div>
-                                <div class="media-content">
-                                    <p class="title is-4">IEEE Computer Society</p>
-                                    <p class="subtitle is-6">Chairperson</p>
-                                </div>
-                            </div>
-
-                            <div class="content">
-                                Organized CodeRally - a free-for-all online hackathon which hones your ability to think
-                                by
-                                solving various tasks provided.
-                                <br />
-                                <br />
-                                <time datetime="2016-1-1">Sept 2019 - Sept 2020, 1 year</time>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="column is-4 is-offset-0 is-flex-desktop-only is-flex-tablet-only">
-                    <div class="card">
-                        <div class="card-content">
-                            <div class="media">
-                                <div class="media-left">
-                                    <figure class="image is-48x48">
-                                        <img src="./img/mozilla.jpeg" alt="Placeholder image">
-                                    </figure>
-                                </div>
-                                <div class="media-content">
-                                    <p class="title is-4">Mozilla Campus Club of IIT</p>
-                                    <p class="subtitle is-6">Student Director</p>
-                                </div>
-                            </div>
-
-                            <div class="content">
-                                Assisted in planning & organizing various events such as Flutter Workshop & AR/VR
-                                Workshop
-                                in the Campus club.
-                                <!--                            <a>@bulmaio</a>.-->
-                                <!--                            <a href="#">#css</a> <a href="#">#responsive</a>-->
-                                <br />
-                                <br />
-                                <time datetime="2016-1-1">Jan 2020 - Oct 2020, 9 months</time>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="column is-4 is-offset-0 is-flex-desktop-only is-flex-tablet-only">
-                    <div class="card">
-                        <div class="card-content">
-                            <div class="media">
-                                <div class="media-left">
-                                    <figure class="image is-48x48">
-                                        <img src="./img/rotaract.jpg" alt="Placeholder image">
-                                    </figure>
-                                </div>
-                                <div class="media-content">
-                                    <p class="title is-4">Rotaract Club of IIT</p>
-                                    <p class="subtitle is-6">IT Director</p>
-                                </div>
-                            </div>
-
-                            <div class="content">
-                                Developed a website for the IIT Game Festival 2019 using WordPress and an app for Hotdog
-                                Showdown 2019/2020 using Android (Java)
-                                <!--                            <a>@bulmaio</a>.-->
-                                <!--                            <a href="#">#css</a> <a href="#">#responsive</a>-->
-                                <br />
-                                <br />
-                                <time datetime="2016-1-1">Jun 2019 - Sept 2019, 4 months</time>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-        </div>
-    </section>
-
-    <!-- <section class="section" id="contact">
-        <div class="container">
-            <h1 class="title is-3 has-text-centered">Contact Info</h1>
-            <p class="subtitle is-6 has-text-centered">Reach out to me!</p>
-            <div class="columns is-centered pt-6">
-                <div class="column is-6">
-                    <div class="columns">
-                        <div class="column">
-                            <div class="field">
-                                <label class="label">Full Name</label>
-                                <div class="control">
-                                    <input class="input" type="text" placeholder="Enter your full name" />
-                                </div>
-                            </div>
-                        </div>
-                        <div class="column">
-                            <div class="field">
-                                <label class="label">Email</label>
-                                <div class="control">
-                                    <input class="input is-danger" type="email"
-                                        placeholder="Enter your email address" />
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="columns">
-                        <div class="column">
-                            <div class="field">
-                                <label class="label">Phone Number</label>
-                                <div class="control">
-                                    <input class="input" type="text" placeholder="Enter your phone number" />
-                                </div>
-                            </div>
-                        </div>
-                        <div class="column">
-                            <div class="field">
-                                <label class="label">Subject</label>
-                                <div class="control">
-                                    <input class="input" type="text" placeholder="Enter the subject" />
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="field">
-                        <label class="label">Message</label>
-                        <div class="control">
-                            <textarea class="textarea" placeholder="Your message"></textarea>
-                        </div>
-                    </div>
-
-                    <div class="field has-text-centered pt-2">
-                        <div class="control">
-                            <label class="checkbox">
-                                <input type="checkbox" />
-                                I agree to the
-                                <a href="#" class="is-primary">terms and conditions</a>
-                            </label>
-                        </div>
-                    </div>
-
-                    <div class="column has-text-centered is-centered pt-4">
-                        <div class="field is-grouped has-text-centered has-addons-centered has-addons">
-                            <div class="control has-text-centered">
-                                <button class="button is-primary has-text-centered">Submit</button>
-                            </div>
-                            <div class="control has-text-centered">
-                                <button class="button is-light has-text-centered">
-                                    Cancel
-                                </button>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-            </div>
-        </div>
-    </section> -->
-
-    <footer class="footer py-6 pt-10 mt-6">
-        <div class="content has-text-centered" style="font-family: DM Mono; color: white; ">
-            <div class="columns has-text-centered is-centered">
-                <div class="column is-narrow">
-                    <a class="has-text-white" href="https://www.linkedin.com/in/akassharjun/">
-                        <div class="mx-2">
-
-                            <p class="heading">Linkedin</p>
-                            <p class="title pt-1">
+                        <p class="heading">Linkedin</p>
+                        <p class="title pt-1">
                                 <span class="icon is-medium">
                                     <i class="devicon-linkedin-plain colored"></i>
                                 </span>
-                            </p>
-                        </div>
-                    </a>
-                </div>
-                <div class="column is-narrow">
-                    <a class="has-text-white" href="https://github.com/akassharjun">
+                        </p>
+                    </div>
+                </a>
+            </div>
+            <div class="column is-narrow">
+                <a class="has-text-white" href="https://github.com/akassharjun">
 
-                        <div class="mx-2">
+                    <div class="mx-2">
 
-                            <p class="heading">GitHub</p>
-                            <p class="title pt-1">
+                        <p class="heading">GitHub</p>
+                        <p class="title pt-1">
                                 <span class="icon is-medium">
                                     <i class="devicon-github-plain"></i>
                                 </span>
-                            </p>
-                        </div>
-                    </a>
-                </div>
-                <div class="column is-narrow">
-                    <a class="has-text-white" href="https://twitter.com/AkassharjunS">
-                        <div class="mx-2">
+                        </p>
+                    </div>
+                </a>
+            </div>
+            <div class="column is-narrow">
+                <a class="has-text-white" href="https://twitter.com/AkassharjunS">
+                    <div class="mx-2">
 
-                            <p class="heading">Twitter</p>
-                            <p class="title pt-1">
+                        <p class="heading">Twitter</p>
+                        <p class="title pt-1">
                                 <span class="icon is-medium">
                                     <i class="devicon-twitter-plain colored"></i>
                                 </span>
-                            </p>
-                        </div>
-                    </a>
-                </div>
-                <div class="column is-narrow">
-                    <a class="has-text-white" href="https://www.youtube.com/watch?v=dQw4w9WgXcQ">
+                        </p>
+                    </div>
+                </a>
+            </div>
+            <div class="column is-narrow">
+                <a class="has-text-white" href="https://www.youtube.com/watch?v=dQw4w9WgXcQ">
 
-                        <div class="mx-2">
+                    <div class="mx-2">
 
-                            <p class="heading">Reddit</p>
-                            <p class="title pt-1">
+                        <p class="heading">Reddit</p>
+                        <p class="title pt-1">
                                 <span class="icon is-medium">
                                     <i class="fab fa-reddit"></i>
                                 </span>
-                            </p>
-                        </div>
-                    </a>
-                </div>
-            </div>
-        </div>
-
-        <div class="columns mt-5 pt-4 pb-3">
-            <div class="column is-offset-5">
-                <a class="navbar-item" href="index.html">
-                    <img src="img/nav-header.png" alt="Akassharjun's Portfolio">
+                        </p>
+                    </div>
                 </a>
-                <!--            <a class="navbar-item pl-5">-->
-                <!--                <span style="font-size: 14px; color:white"><strong>2020 © All rights reserved</strong></span>-->
-                <!--            </a>-->
             </div>
         </div>
-    </footer>
+    </div>
+
+    <div class="columns mt-5 pt-4 pb-3">
+        <div class="column is-offset-5">
+            <a class="navbar-item" href="index.html">
+                <img src="img/nav-header.png" alt="Akassharjun's Portfolio">
+            </a>
+            <!--            <a class="navbar-item pl-5">-->
+            <!--                <span style="font-size: 14px; color:white"><strong>2020 © All rights reserved</strong></span>-->
+            <!--            </a>-->
+        </div>
+    </div>
+</footer>
 
 </body>
 
