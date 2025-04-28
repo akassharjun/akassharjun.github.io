@@ -1,696 +1,904 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="scroll-smooth">
 
 <head>
-    <meta charset="utf-8"/>
-    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
-    <meta name="viewport" content="width=device-width, initial-scale=1"/>
-    <title>Akassharjun's Portfolio</title>
-    <link rel="stylesheet" href="css/index.css"/>
-    <!-- ICONS CSS -->
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/devicons/devicon@master/devicon.min.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css"
-          integrity="sha512-+4zCK9k+qNFUR5X+cKL9EIR+ZOhtIloNl9GIKS57V1MyNsYpYcUrUeQc9vNfzsWfV28IaLL3i96P9sdNyeRssA=="
-          crossorigin="anonymous"/>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Akassharjun Shanmugarajah - Portfolio</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Source+Code+Pro:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" type='text/css' href="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/devicon.min.css" />
+    <style>
+        :root {
+            --bg-color: #0f0f0f;
+            --text-color: #39ff14;
+            /* Neon Green */
+            --prompt-color: #39ff14;
+            --border-color: rgba(57, 255, 20, 0.4);
+            --header-bg: #2a2a2a;
+            --input-bg: #1a1a1a;
+            --scrollbar-track: #1a1a1a;
+            --scrollbar-thumb: #39ff14;
+            --scrollbar-thumb-hover: #5eff3d;
+            --nav-height: 56px;
+        }
 
-    <!-- FAVICON -->
-    <link rel="apple-touch-icon" sizes="57x57" href="./img/favicon/android-chrome-192x192.png">
-    <link rel="apple-touch-icon" sizes="57x57" href="./img/favicon/android-chrome-512x512.png">
-    <link rel="apple-touch-icon" sizes="57x57" href="./img/favicon/apple-touch-icon.png">
-    <link rel="icon" type="image/png" sizes="32x32" href="./img/favicon/favicon-32x32.png">
-    <link rel="icon" type="image/png" sizes="16x16" href="./img/favicon/favicon-16x16.png">
+        body {
+            font-family: 'Source Code Pro', 'Courier New', monospace;
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            padding-top: var(--nav-height);
+        }
+
+        section:not(#home) {
+            padding-top: var(--nav-height);
+            margin-top: -var(--nav-height);
+        }
+
+        @keyframes blink-visual {
+
+            0%,
+            100% {
+                opacity: 1;
+            }
+
+            50% {
+                opacity: 0;
+            }
+        }
+
+        .blinking-cursor-visual {
+            display: inline-block;
+            width: 10px;
+            height: 1.2em;
+            background-color: var(--text-color);
+            margin-left: 4px;
+            animation: blink-visual 1s step-end infinite;
+            position: relative;
+            bottom: -0.15em;
+        }
+
+        .neon-glow-hover:hover {
+            box-shadow: 0 0 8px var(--text-color), 0 0 15px var(--text-color);
+            transition: box-shadow 0.3s ease-in-out;
+        }
+
+        /* --- Styles for Embedded Terminal --- */
+        #terminal-container {
+            height: 350px;
+            /* Default height */
+            max-width: 600px;
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+            background-color: var(--input-bg);
+            /* Changed background slightly for contrast */
+            border: 1px solid var(--border-color);
+            border-radius: 6px;
+            margin: 0 auto;
+            overflow: hidden;
+            /* CRITICAL: Prevents container scroll */
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.4);
+        }
+
+        @media (min-width: 640px) {
+            #terminal-container {
+                height: 400px;
+                /* Taller on sm+ screens */
+            }
+        }
+
+        /* Terminal Header with Decorations */
+        #terminal-header {
+            height: 30px;
+            flex-shrink: 0;
+            background-color: var(--header-bg);
+            padding: 0 10px;
+            display: flex;
+            align-items: center;
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        #terminal-header .dots {
+            display: flex;
+            align-items: center;
+            /* Vertically center dots */
+            gap: 0.5rem;
+            /* Equivalent to space-x-2 */
+        }
+
+        #terminal-header .dots span {
+            display: block;
+            /* Ensure spans behave like blocks */
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            margin-right: 6px;
+            /* Manual margin as space-x might not work directly inside */
+        }
+
+        #terminal-header .dots span:last-child {
+            margin-right: 0;
+            /* Remove margin from last dot */
+        }
+
+        #terminal-header .title {
+            margin-left: auto;
+            /* Pushes title to the right */
+            font-size: 0.75rem;
+            /* 12px */
+            color: #aaa;
+            white-space: nowrap;
+            /* Prevent title wrap */
+            overflow: hidden;
+            /* Hide overflow */
+            text-overflow: ellipsis;
+            /* Add ... if title is too long */
+            padding-left: 10px;
+            /* Space between dots and title */
+        }
+
+        /* Terminal Output Area - Ensure Scrolling */
+        #terminal-output {
+            flex-grow: 1;
+            /* Takes available space */
+            overflow-y: auto;
+            /* CRITICAL: Enables vertical scroll */
+            padding: 0.75rem;
+            /* 12px */
+            font-size: 0.85rem;
+            /* 13.6px */
+            line-height: 1.4;
+            /* Improve readability */
+        }
+
+        /* Terminal Input Area & Input Styling */
+        #terminal-input-container {
+            height: 35px;
+            flex-shrink: 0;
+            background-color: var(--input-bg);
+            border-top: 1px solid var(--border-color);
+            padding: 0.5rem 0.75rem;
+            /* 8px 12px */
+            display: flex;
+            align-items: center;
+        }
+
+        #terminal-input {
+            background: transparent;
+            border: none;
+            outline: none;
+            color: var(--text-color);
+            caret-color: var(--text-color);
+            /* Color of the native text cursor */
+            width: 100%;
+            font-size: 0.85rem;
+            /* Match output font size */
+            line-height: 1.4;
+            flex-grow: 1;
+            /* Allow input to fill space */
+        }
+
+        #terminal-input-container label {
+            color: var(--prompt-color);
+            font-weight: 600;
+            /* semibold */
+            margin-right: 0.5rem;
+            /* 8px */
+            white-space: nowrap;
+        }
+
+
+        @keyframes blink-terminal {
+
+            0%,
+            100% {
+                background-color: var(--text-color);
+                opacity: 1;
+            }
+
+            50% {
+                background-color: transparent;
+                opacity: 0;
+            }
+
+            /* Changed opacity for better blink */
+        }
+
+        .terminal-cursor {
+            display: inline-block;
+            width: 9px;
+            height: 1.2em;
+            /* Adjust height relative to font size */
+            background-color: var(--text-color);
+            margin-left: 4px;
+            animation: blink-terminal 1s step-end infinite;
+            vertical-align: middle;
+            /* Align with text */
+            box-shadow: 0 0 3px var(--text-color);
+            flex-shrink: 0;
+            /* Prevent cursor from shrinking */
+        }
+
+        #terminal-output a {
+            color: #60a5fa;
+            text-decoration: underline;
+            word-break: break-all;
+        }
+
+        #terminal-output a:hover {
+            color: #93c5fd;
+        }
+
+        #terminal-output pre {
+            white-space: pre-wrap;
+            word-wrap: break-word;
+            font-size: inherit;
+        }
+
+        /* Custom Scrollbar */
+        #terminal-output::-webkit-scrollbar {
+            width: 6px;
+        }
+
+        #terminal-output::-webkit-scrollbar-track {
+            background: var(--scrollbar-track);
+        }
+
+        #terminal-output::-webkit-scrollbar-thumb {
+            background: var(--scrollbar-thumb);
+            border-radius: 3px;
+        }
+
+        #terminal-output::-webkit-scrollbar-thumb:hover {
+            background: var(--scrollbar-thumb-hover);
+        }
+
+        /* Global Scrollbar */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: var(--scrollbar-track);
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: var(--scrollbar-thumb);
+            border-radius: 4px;
+        }
+
+        ::-webkit-scrollbar-thumb:hover {
+            background: var(--scrollbar-thumb-hover);
+        }
+
+        /* Skills Section Icons */
+        .skills-grid span {
+            font-size: 2.5rem;
+            margin-bottom: 0.5rem;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        @media (min-width: 768px) {
+            .skills-grid span {
+                font-size: 2rem;
+                padding: 2px;
+            }
+        }
+    </style>
 </head>
 
 <body>
 
-<nav class="navbar px-3 py-3  is-fixed-top">
-    <div class="navbar-brand px-2 py-2">
-        <a class="navbar-item" href="_">
-            <img src="img/nav-header.png" alt="Akassharjun's Portfolio">
-        </a>
-        <div class="navbar-burger burger" data-target="navbarExampleTransparentExample">
-            <span></span>
-            <span></span>
-            <span></span>
-        </div>
-    </div>
+    <!-- Navigation Bar -->
+    <nav id="top-nav" class="fixed top-0 left-0 w-full bg-black/80 backdrop-blur-sm border-b border-[var(--border-color)] z-50">
+        <div class="container mx-auto px-4">
+            <div class="flex items-center justify-between h-[var(--nav-height)]">
+                <!-- Logo/Brand -->
+                <a href="#home" class="text-[var(--text-color)] font-bold text-lg hover:text-white transition-colors">
+                    <span class="text-gray-500">></span> akassharjun shanmugarajah
+                </a>
 
-    <div class="navbar-menu px-5 py-3" style="font-family: DM Mono; color: white; ">
-        <div class="navbar-end">
-            <a class="navbar-item" href="#home">
-                <span>Home</span>
-            </a>
-            <a class="navbar-item" href="#skills">
-                Skills
-            </a>
-            <a class="navbar-item" href="#experience">
-                Experience
-            </a><a class="navbar-item" href="#projects">
-            Projects
-        </a>
-            <!-- <a class="navbar-item" href="#contact">
-                Contact
-            </a> -->
-        </div>
-    </div>
-</nav>
-
-<section class="hero is-medium is-bold pt-10" id="home">
-    <div class="hero-body pt-8">
-        <div class="container">
-            <div class="columns is-vcentered">
-                <div class="column is-4 is-offset-1">
-                    <h1 class="title is-1 is-3-mobile">
-                        Hello there!
-                    </h1>
-                    <h2 class="subtitle has-text-justified">
-                        I am Akassharjun Shanmugarajah, a software engineer with 2+ years of experience who is
-                        passionate
-                        about building software solutions and specialises in back-end technologies.
-                        In my spare time, I enjoy researching cutting-edge technology and designing user interfaces.
-                    </h2>
-                    <form method="get" action="asset/akassh-cv.pdf">
-                        <button class="button is-primary">
-                            VIEW RESUME
-                        </button>
-                    </form>
+                <!-- Desktop Navigation -->
+                <div class="hidden md:flex items-center space-x-6">
+                    <a href="#home" class="text-gray-300 hover:text-white transition-colors">Home</a>
+                    <a href="#skills" class="text-gray-300 hover:text-white transition-colors">Skills</a>
+                    <a href="#work" class="text-gray-300 hover:text-white transition-colors">Work</a>
+                    <a href="#projects" class="text-gray-300 hover:text-white transition-colors">Projects</a>
+                    <a href="#volunteer" class="text-gray-300 hover:text-white transition-colors">Volunteer</a>
+                    <a href="#contact-section" class="text-gray-300 hover:text-white transition-colors">Contact</a>
                 </div>
 
-                <div class="column is-4 is-offset-2">
-                    <figure class="image is-768x768">
-                        <img class="overlay-purple" src="img/hero-image.png">
-                    </figure>
-                </div>
+                <!-- Mobile Menu Button -->
+                <button id="mobile-menu-button" class="md:hidden text-gray-300 hover:text-white focus:outline-none">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+                    </svg>
+                </button>
             </div>
 
-        </div>
-    </div>
-</section>
-
-<section class="section pt-8" id="skills">
-    <div class="container">
-        <h1 class="title is-3 has-text-centered">Skills</h1>
-        <p class="subtitle is-6 has-text-centered">Here are some of my technical skills</p>
-
-        <!-- FIRST ROW -->
-        <nav class="level pt-6 is-mobile" style="font-family: DM Mono, monospace;color:white;">
-            <div class="level-item has-text-centered">
-                <div>
-                    <p class="heading">NodeJS</p>
-                    <p class="title pt-1">
-                            <span class="icon is-large">
-                                <i class="devicon-nodejs-plain colored"></i>
-                            </span>
-                    </p>
-                </div>
-            </div>
-            <div class="level-item has-text-centered">
-                <div>
-                    <p class="heading">Golang</p>
-                    <p class="title pt-1">
-                            <span class="icon is-large">
-                                <i class="devicon-go-plain"></i>
-                            </span>
-                    </p>
-                </div>
-            </div>
-            <div class="level-item has-text-centered">
-                <div>
-                    <p class="heading">JavaScript</p>
-                    <p class="title pt-1">
-                            <span class="icon is-large">
-                                <i class="devicon-javascript-plain colored"></i>
-                            </span>
-                    </p>
-                </div>
-            </div>
-            <div class="level-item has-text-centered">
-                <div>
-                    <p class="heading">Java</p>
-                    <p class="title pt-1">
-                            <span class="icon is-large">
-                                <i class="devicon-java-plain colored"></i>
-                            </span>
-                    </p>
-                </div>
-            </div>
-            <div class="level-item has-text-centered">
-                <div>
-                    <p class="heading">Python</p>
-                    <p class="title pt-1">
-                            <span class="icon is-large">
-                                <i class="devicon-python-plain colored"></i>
-                            </span>
-                    </p>
-                </div>
-            </div>
-        </nav>
-
-        <!-- SECOND ROW -->
-        <nav class="level pt-6 is-mobile" style="font-family: DM Mono, monospace;color:white;">
-            <div class="level-item has-text-centered">
-                <div>
-                    <p class="heading">gRPC</p>
-                    <p class="title pt-1">
-                            <span class="icon is-large">
-                                <i class="devicon-grpc-plain colored"></i>
-                            </span>
-                    </p>
-                </div>
-            </div>
-            <div class="level-item has-text-centered">
-                <div>
-                    <p class="heading">GraphQL</p>
-                    <p class="title pt-1">
-                            <span class="icon is-large">
-                                <i class="devicon-graphql-plain colored"></i>
-                            </span>
-                    </p>
-                </div>
-            </div>
-            <div class="level-item has-text-centered">
-                <div>
-                    <p class="heading">Flutter</p>
-                    <p class="title pt-1">
-                            <span class="icon is-large">
-<i class="devicon-flutter-plain colored"></i>
-                            </span>
-                    </p>
-                </div>
-            </div>
-            <div class="level-item has-text-centered">
-                <div>
-                    <p class="heading">Rabbit MQ</p>
-                    <p class="title pt-1">
-                            <span class="icon is-large">
-                                <i class="devicon-rabbitmq-original colored"></i>
-                            </span>
-                    </p>
-                </div>
-            </div>
-            <div class="level-item has-text-centered">
-                <div>
-                    <p class="heading">Redis</p>
-                    <p class="title pt-1">
-                            <span class="icon is-large">
-                                <i class="devicon-redis-plain colored"></i>
-                            </span>
-                    </p>
-                </div>
-            </div>
-        </nav>
-
-        <!-- THIRD ROW -->
-        <nav class="level pt-6 is-mobile" style="font-family: DM Mono, monospace;color:white;">
-            <div class="level-item has-text-centered">
-                <div>
-                    <p class="heading">Git</p>
-                    <p class="title pt-1">
-                            <span class="icon is-large">
-                                <i class="devicon-git-plain colored"></i>
-                            </span>
-                    </p>
-                </div>
-            </div>
-            <div class="level-item has-text-centered">
-                <div>
-                    <p class="heading">Mongo DB</p>
-                    <p class="title pt-1">
-                            <span class="icon is-large">
-                                <i class="devicon-mongodb-plain colored"></i>
-                            </span>
-                    </p>
-                </div>
-            </div>
-            <div class="level-item has-text-centered">
-                <div>
-                    <p class="heading">MySQL</p>
-                    <p class="title pt-1">
-                            <span class="icon is-large">
-                                <i class="devicon-mysql-plain colored"></i>
-                            </span>
-                    </p>
-                </div>
-            </div>
-            <div class="level-item has-text-centered">
-                <div>
-                    <p class="heading">HTML</p>
-                    <p class="title pt-1">
-                            <span class="icon is-large">
-                                <i class="devicon-html5-plain colored"></i>
-                            </span>
-                    </p>
-                </div>
-            </div>
-            <div class="level-item has-text-centered">
-                <div>
-                    <p class="heading">CSS</p>
-                    <p class="title pt-1">
-                            <span class="icon is-large">
-                                <i class="devicon-css3-plain colored"></i>
-                            </span>
-                    </p>
-                </div>
-            </div>
-        </nav>
-    </div>
-</section>
-
-<section class="section mt-6" id="experience">
-    <div class="container ">
-        <h1 class="title is-3 has-text-centered">Experience</h1>
-        <p class="subtitle is-6 has-text-centered">Here are my experiences in the tech world</p>
-        <div class="columns pt-6 level-item">
-            <div class="column is-4 is-offset-0 new-company is-flex-desktop-only is-flex-tablet-only is-flex">
-                <div class="card">
-                    <div class="card-content">
-                        <div class="media">
-                            <div class="media-left">
-                                <figure class="image is-48x48">
-                                    <img src="./img/work-3.jpeg" alt="Placeholder image">
-                                </figure>
-                            </div>
-                            <div class="media-content">
-                                <p class="title is-4">Circles.Life</p>
-                                <p class="subtitle is-6  pt-5">Colombo, Sri Lanka</p>
-                            </div>
-                        </div>
-
-                        <div class="content">
-                            Working as a Back‐end Engineer, responsible for the upkeep of Telco microservices and development of new product items.
-                            <br/>
-                            <br/>
-                            <br/>
-                            <time datetime="2016-1-1">Sometime in the future</time>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="column is-4 is-offset-0 is-flex-desktop-only is-flex-tablet-only is-flex">
-                <div class="card">
-                    <div class="card-content">
-                        <div class="media">
-                            <div class="media-left">
-                                <figure class="image is-48x48">
-                                    <img src="./img/work-2.png" alt="Placeholder image">
-                                </figure>
-                            </div>
-                            <div class="media-content">
-                                <p class="title is-4">ThinkSmart Solutions</p>
-                                <p class="subtitle is-6  pt-5">Colombo, Sri Lanka</p>
-                            </div>
-                        </div>
-
-                        <div class="content">
-                            Maintained the backend services of the flagship product EatMealFirst. (EMF)
-                            <!--                            <a>@bulmaio</a>.-->
-                            <!--                            <a href="#">#css</a> <a href="#">#responsive</a>-->
-                            <br/>
-                            <br/>
-                            <time datetime="2016-1-1">Jun 2020 - Present</time>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="column is-4 is-offset-0 is-flex-desktop-only is-flex-tablet-only is-flex">
-                <div class="card">
-                    <div class="card-content">
-                        <div class="media">
-                            <div class="media-left">
-                                <figure class="image is-48x48">
-                                    <img src="./img/work-1.png" alt="Placeholder image">
-                                </figure>
-                            </div>
-                            <div class="media-content">
-                                <p class="title is-4">mBrain Technologies</p>
-                                <p class="subtitle is-6  pt-5">Colombo, Sri Lanka</p>
-                            </div>
-                        </div>
-
-                        <div class="content">
-                            Developed mobile applications in Android (Java) & RESTful API services using JAX-RS &
-                            Glassfish
-                            <!--                            <a>@bulmaio</a>.-->
-                            <!--                            <a href="#">#css</a> <a href="#">#responsive</a>-->
-                            <br/>
-                            <br/>
-                            <time datetime="2016-1-1">Aug 2018 - Dec 2018, 5 months</time>
-                        </div>
-                    </div>
+            <!-- Mobile Navigation Menu -->
+            <div id="mobile-menu" class="hidden md:hidden bg-black/90 backdrop-blur-sm border-t border-[var(--border-color)]">
+                <div class="px-2 pt-2 pb-3 space-y-1">
+                    <a href="#home" class="block px-3 py-2 text-gray-300 hover:text-white hover:bg-gray-800 rounded-md transition-colors">Home</a>
+                    <a href="#skills" class="block px-3 py-2 text-gray-300 hover:text-white hover:bg-gray-800 rounded-md transition-colors">Skills</a>
+                    <a href="#work" class="block px-3 py-2 text-gray-300 hover:text-white hover:bg-gray-800 rounded-md transition-colors">Work</a>
+                    <a href="#projects" class="block px-3 py-2 text-gray-300 hover:text-white hover:bg-gray-800 rounded-md transition-colors">Projects</a>
+                    <a href="#volunteer" class="block px-3 py-2 text-gray-300 hover:text-white hover:bg-gray-800 rounded-md transition-colors">Volunteer</a>
+                    <a href="#contact-section" class="block px-3 py-2 text-gray-300 hover:text-white hover:bg-gray-800 rounded-md transition-colors">Contact</a>
                 </div>
             </div>
         </div>
+    </nav>
 
-    </div>
-</section>
-
-<section class="section mt-6" id="projects">
-    <div class="container">
-        <h1 class="title is-3 has-text-centered">Projects</h1>
-        <p class="subtitle is-6 has-text-centered">Here are a few of my work</p>
-        <div class="columns pt-6">
-            <div class="column is-4 is-offset-0 is-flex-desktop-only is-flex-tablet-only">
-                <div class="card">
-                    <!-- <div class="card-image">
-                        <figure class="image is-3by2">
-                            <img src="https://bulma.io/images/placeholders/1280x960.png" alt="Placeholder image">
-                        </figure>
-                    </div> -->
-                    <div class="card-content">
-                        <div class="media">
-                            <!-- <div class="media-left">
-                                <figure class="image is-48x48">
-                                    <img src="https://bulma.io/images/placeholders/96x96.png"
-                                        alt="Placeholder image">
-                                </figure>
-                            </div> -->
-                            <div class="media-content">
-                                <p class="title is-4">Speculo</p>
-                                <p class="subtitle is-6">BACKEND</p>
-                            </div>
-                        </div>
-
-                        <div class="content has-text-justified">
-                            Designed & developed the microservices for Speculo. It's an open source platform that
-                            utilizes a DCIGN for indexing faces found in a video
-                            footage, specifically for CCTV surveillance.
-                            <br>
-                            <br>
-                            <time datetime="2016-1-1">#nodejs #typescript #python #opencv</time>
-                        </div>
-                    </div>
+    <!-- Landing Section -->
+    <header id="home"
+        class="min-h-screen flex items-center justify-center px-4 md:px-12 py-16 bg-gradient-to-b from-[#0f0f0f] to-[#1a1a1a]">
+        <div class="container mx-auto grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-12 items-center">
+            <!-- Left Column: Intro Text -->
+            <div class="text-left">
+                <h1 class="text-3xl sm:text-4xl lg:text-5xl font-bold mb-3 break-words">
+                    <span class="text-gray-500">>_</span> Hello, I'm Akassharjun
+                </h1>
+                <p class="text-base sm:text-lg lg:text-xl mb-6 break-words">
+                    Software Engineer | Golang & NodeJS | Cloud Enthusiast<span class="blinking-cursor-visual"></span>
+                </p>
+                <p class="text-sm text-gray-400 break-words">// Welcome! Use the nav or scroll down.</p>
+                <p class="text-sm text-gray-400 break-words">// Try the interactive terminal on the right!</p>
+                <div class="mt-6 space-x-4">
+                    <a href="#skills"
+                        class="inline-block px-4 py-2 border border-[var(--text-color)] rounded hover:bg-[var(--text-color)] hover:text-black transition duration-300 neon-glow-hover">Explore
+                        Skills ↓</a>
+                    <a href="#contact-section"
+                        class="inline-block px-4 py-2 border border-blue-400 text-blue-400 rounded hover:bg-blue-400 hover:text-black transition duration-300">Contact
+                        Me</a>
                 </div>
             </div>
-            <div class="column is-4 is-offset-0 is-flex-desktop-only is-flex-tablet-only">
-                <div class="card">
-                    <!-- <div class="card-image">
-                        <figure class="image is-3by2">
-                            <img src="https://bulma.io/images/placeholders/1280x960.png" alt="Placeholder image">
-                        </figure>
-                    </div> -->
-                    <div class="card-content">
-                        <div class="media">
-                            <!-- <div class="media-left">
-                                <figure class="image is-48x48">
-                                    <img src="https://bulma.io/images/placeholders/96x96.png"
-                                        alt="Placeholder image">
-                                </figure>
-                            </div> -->
-                            <div class="media-content">
-                                <p class="title is-4">Charilake</p>
-                                <p class="subtitle is-6">WEBSITE</p>
-                            </div>
-                        </div>
 
-                        <div class="content has-text-justified">
-                            Completely revamped the design using Figma and created the website for "Charilake
-                            Boutique
-                            Hotel", a hotel in Koggalle, Galle. You can find their website over <a
-                                href="https://www.charilakehotel.lk/">here</a>.
-                            <br>
-                            <br>
-                            <time datetime="2016-1-1">#bulma #css #html</time>
+            <!-- Right Column: Embedded Terminal -->
+            <div class="flex justify-center items-center w-full">
+                <div id="terminal-container">
+                    <div id="terminal-header">
+                        <div class="dots">
+                            <span class="bg-red-500"></span>
+                            <span class="bg-yellow-500"></span>
+                            <span class="bg-green-500"></span>
                         </div>
+                        <span class="title">akassharjun@portfolio: ~</span>
                     </div>
-                </div>
-            </div>
-            <div class="column is-4 is-offset-0 is-flex-desktop-only is-flex-tablet-only">
-                <div class="card">
-                    <!-- <div class="card-image">
-                        <figure class="image is-3by2">
-                            <img src="https://bulma.io/images/placeholders/1280x960.png" alt="Placeholder image">
-                        </figure>
-                    </div> -->
-                    <div class="card-content">
-                        <div class="media">
-                            <!-- <div class="media-left">
-                                <figure class="image is-48x48">
-                                    <img src="https://bulma.io/images/placeholders/96x96.png"
-                                        alt="Placeholder image">
-                                </figure>
-                            </div> -->
-                            <div class="media-content">
-                                <p class="title is-4">Flutter Screen Scaler</p>
-                                <p class="subtitle is-6">LIBRARY</p>
-                            </div>
-                        </div>
-
-                        <div class="content has-text-justified">
-                            A package to resize your flutter widgets according to the screen size with the use of
-                            percentages. Inspired by how percentages are used in Web Development.
-                            <br>
-                            <br>
-                            <time datetime="2016-1-1">#flutter</time>
-                        </div>
+                    <div id="terminal-output">
                     </div>
-                </div>
-            </div>
-        </div>
-    </div>
-</section>
-
-<section class="section mt-6">
-    <div class="container ">
-        <h1 class="title is-3 has-text-centered">Clubs & Societies</h1>
-        <p class="subtitle is-6 has-text-centered">Here are my experiences managing and being part of a clubs</p>
-        <div class="columns pt-6">
-            <div class="column is-4 is-offset-0 is-flex-desktop-only is-flex-tablet-only">
-                <div class="card">
-                    <div class="card-content">
-                        <div class="media">
-                            <div class="media-left">
-                                <figure class="image is-48x48">
-                                    <img src="./img/ieeecs.png" alt="IEEECS">
-                                </figure>
-                            </div>
-                            <div class="media-content">
-                                <p class="title is-4">IEEE Computer Society</p>
-                                <p class="subtitle is-6">Chairperson</p>
-                            </div>
-                        </div>
-
-                        <div class="content">
-                            Organized CodeRally - a free-for-all online hackathon which hones your ability to think
-                            by
-                            solving various tasks provided.
-                            <br/>
-                            <br/>
-                            <time datetime="2016-1-1">Sept 2019 - Sept 2020, 1 year</time>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="column is-4 is-offset-0 is-flex-desktop-only is-flex-tablet-only">
-                <div class="card">
-                    <div class="card-content">
-                        <div class="media">
-                            <div class="media-left">
-                                <figure class="image is-48x48">
-                                    <img src="./img/mozilla.jpeg" alt="Placeholder image">
-                                </figure>
-                            </div>
-                            <div class="media-content">
-                                <p class="title is-4">Mozilla Campus Club of IIT</p>
-                                <p class="subtitle is-6">Student Director</p>
-                            </div>
-                        </div>
-
-                        <div class="content">
-                            Assisted in planning & organizing various events such as Flutter Workshop & AR/VR
-                            Workshop
-                            in the Campus club.
-                            <!--                            <a>@bulmaio</a>.-->
-                            <!--                            <a href="#">#css</a> <a href="#">#responsive</a>-->
-                            <br/>
-                            <br/>
-                            <time datetime="2016-1-1">Jan 2020 - Oct 2020, 9 months</time>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="column is-4 is-offset-0 is-flex-desktop-only is-flex-tablet-only">
-                <div class="card">
-                    <div class="card-content">
-                        <div class="media">
-                            <div class="media-left">
-                                <figure class="image is-48x48">
-                                    <img src="./img/rotaract.jpg" alt="Placeholder image">
-                                </figure>
-                            </div>
-                            <div class="media-content">
-                                <p class="title is-4">Rotaract Club of IIT</p>
-                                <p class="subtitle is-6">IT Director</p>
-                            </div>
-                        </div>
-
-                        <div class="content">
-                            Developed a website for the IIT Game Festival 2019 using WordPress and an app for Hotdog
-                            Showdown 2019/2020 using Android (Java)
-                            <!--                            <a>@bulmaio</a>.-->
-                            <!--                            <a href="#">#css</a> <a href="#">#responsive</a>-->
-                            <br/>
-                            <br/>
-                            <time datetime="2016-1-1">Jun 2019 - Sept 2019, 4 months</time>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-    </div>
-</section>
-
-<!-- <section class="section" id="contact">
-    <div class="container">
-        <h1 class="title is-3 has-text-centered">Contact Info</h1>
-        <p class="subtitle is-6 has-text-centered">Reach out to me!</p>
-        <div class="columns is-centered pt-6">
-            <div class="column is-6">
-                <div class="columns">
-                    <div class="column">
-                        <div class="field">
-                            <label class="label">Full Name</label>
-                            <div class="control">
-                                <input class="input" type="text" placeholder="Enter your full name" />
-                            </div>
-                        </div>
-                    </div>
-                    <div class="column">
-                        <div class="field">
-                            <label class="label">Email</label>
-                            <div class="control">
-                                <input class="input is-danger" type="email"
-                                    placeholder="Enter your email address" />
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="columns">
-                    <div class="column">
-                        <div class="field">
-                            <label class="label">Phone Number</label>
-                            <div class="control">
-                                <input class="input" type="text" placeholder="Enter your phone number" />
-                            </div>
-                        </div>
-                    </div>
-                    <div class="column">
-                        <div class="field">
-                            <label class="label">Subject</label>
-                            <div class="control">
-                                <input class="input" type="text" placeholder="Enter the subject" />
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="field">
-                    <label class="label">Message</label>
-                    <div class="control">
-                        <textarea class="textarea" placeholder="Your message"></textarea>
-                    </div>
-                </div>
-
-                <div class="field has-text-centered pt-2">
-                    <div class="control">
-                        <label class="checkbox">
-                            <input type="checkbox" />
-                            I agree to the
-                            <a href="#" class="is-primary">terms and conditions</a>
+                    <div id="terminal-input-container">
+                        <label for="terminal-input">
+                            <span class="hidden sm:inline">user@portfolio:~$</span>
+                            <span class="sm:hidden">></span>
                         </label>
-                    </div>
-                </div>
-
-                <div class="column has-text-centered is-centered pt-4">
-                    <div class="field is-grouped has-text-centered has-addons-centered has-addons">
-                        <div class="control has-text-centered">
-                            <button class="button is-primary has-text-centered">Submit</button>
-                        </div>
-                        <div class="control has-text-centered">
-                            <button class="button is-light has-text-centered">
-                                Cancel
-                            </button>
-                        </div>
+                        <input type="text" id="terminal-input" autocomplete="off" spellcheck="false"
+                            aria-label="Terminal Input">
+                        <span class="terminal-cursor"></span>
                     </div>
                 </div>
             </div>
-
         </div>
-    </div>
-</section> -->
+    </header>
 
-<footer class="footer py-6 pt-10 mt-6">
-    <div class="content has-text-centered" style="font-family: DM Mono; color: white; ">
-        <div class="columns has-text-centered is-centered">
-            <div class="column is-narrow">
-                <a class="has-text-white" href="https://www.linkedin.com/in/akassharjun/">
-                    <div class="mx-2">
-
-                        <p class="heading">Linkedin</p>
-                        <p class="title pt-1">
-                                <span class="icon is-medium">
-                                    <i class="devicon-linkedin-plain colored"></i>
-                                </span>
-                        </p>
-                    </div>
-                </a>
+    <section id="skills" class="py-16 px-4 md:px-12 bg-[#1a1a1a]">
+        <div class="container mx-auto">
+            <h2 class="text-2xl sm:text-3xl lg:text-4xl font-bold mb-10 text-center md:text-left">
+                <span class="text-gray-500">./</span>skills --list
+            </h2>
+            <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-4 md:gap-8 text-center skills-grid">
+                <div
+                    class="flex flex-col items-center border border-gray-700 hover:border-[var(--text-color)] p-3 md:p-4 rounded neon-glow-hover transition duration-300 transform hover:-translate-y-1 bg-[#111]/30">
+                    <span>
+                        <i class="devicon-go-plain colored"></i>
+                    </span>
+                    <p class="font-semibold mt-1 text-sm md:text-base">Golang</p>
+                </div>
+                <div
+                    class="flex flex-col items-center border border-gray-700 hover:border-[var(--text-color)] p-3 md:p-4 rounded neon-glow-hover transition duration-300 transform hover:-translate-y-1 bg-[#111]/30">
+                    <span>
+                        <i class="devicon-nodejs-plain colored"></i>
+                    </span>
+                    <p class="font-semibold mt-1 text-sm md:text-base">Node.js</p>
+                </div>
+                <div
+                    class="flex flex-col items-center border border-gray-700 hover:border-[var(--text-color)] p-3 md:p-4 rounded neon-glow-hover transition duration-300 transform hover:-translate-y-1 bg-[#111]/30">
+                    <span>
+                        <i class="devicon-python-plain colored"></i>
+                    </span>
+                    <p class="font-semibold mt-1 text-sm md:text-base">Python</p>
+                </div>
+                <div
+                    class="flex flex-col items-center border border-gray-700 hover:border-[var(--text-color)] p-3 md:p-4 rounded neon-glow-hover transition duration-300 transform hover:-translate-y-1 bg-[#111]/30">
+                    <span>
+                        <i class="devicon-java-plain colored"></i>
+                    </span>
+                    <p class="font-semibold mt-1 text-sm md:text-base">Java</p>
+                </div>
+                <div
+                    class="flex flex-col items-center border border-gray-700 hover:border-[var(--text-color)] p-3 md:p-4 rounded neon-glow-hover transition duration-300 transform hover:-translate-y-1 bg-[#111]/30">
+                    <span>
+                        <i class="devicon-flutter-plain colored"></i>
+                    </span>
+                    <p class="font-semibold mt-1 text-sm md:text-base">Flutter</p>
+                </div>
+                <div
+                    class="flex flex-col items-center border border-gray-700 hover:border-[var(--text-color)] p-3 md:p-4 rounded neon-glow-hover transition duration-300 transform hover:-translate-y-1 bg-[#111]/30">
+                    <span><i class="devicon-redis-plain colored"></i> </span>
+                    <p class="font-semibold mt-1 text-sm md:text-base">Redis</p>
+                </div>
             </div>
-            <div class="column is-narrow">
-                <a class="has-text-white" href="https://github.com/akassharjun">
 
-                    <div class="mx-2">
+            <!-- Duplicate Grid -->
+            <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-4 md:gap-8 text-center mt-12 skills-grid">
+                <div
+                    class="flex flex-col items-center border border-gray-700 hover:border-[var(--text-color)] p-3 md:p-4 rounded neon-glow-hover transition duration-300 transform hover:-translate-y-1 bg-[#111]/30">
+                    <span><i class="devicon-grpc-plain colored"></i>
+                    </span>
+                    <p class="font-semibold mt-1 text-sm md:text-base">gRPC</p>
+                </div>
+                <div
+                    class="flex flex-col items-center border border-gray-700 hover:border-[var(--text-color)] p-3 md:p-4 rounded neon-glow-hover transition duration-300 transform hover:-translate-y-1 bg-[#111]/30">
+                    <span>
+                        <i class="devicon-rabbitmq-original colored"></i>
 
-                        <p class="heading">GitHub</p>
-                        <p class="title pt-1">
-                                <span class="icon is-medium">
-                                    <i class="devicon-github-plain"></i>
-                                </span>
-                        </p>
-                    </div>
-                </a>
-            </div>
-            <div class="column is-narrow">
-                <a class="has-text-white" href="https://twitter.com/AkassharjunS">
-                    <div class="mx-2">
+                    </span>
+                    <p class="font-semibold mt-1 text-sm md:text-base">RabbitMQ</p>
+                </div>
+                <div
+                    class="flex flex-col items-center border border-gray-700 hover:border-[var(--text-color)] p-3 md:p-4 rounded neon-glow-hover transition duration-300 transform hover:-translate-y-1 bg-[#111]/30">
+                    <span>
+                        <i class="devicon-graphql-plain colored"></i>
 
-                        <p class="heading">Twitter</p>
-                        <p class="title pt-1">
-                                <span class="icon is-medium">
-                                    <i class="devicon-twitter-plain colored"></i>
-                                </span>
-                        </p>
-                    </div>
-                </a>
-            </div>
-            <div class="column is-narrow">
-                <a class="has-text-white" href="https://www.youtube.com/watch?v=dQw4w9WgXcQ">
+                    </span>
+                    <p class="font-semibold mt-1 text-sm md:text-base">GraphQL</p>
+                </div>
+                <div
+                    class="flex flex-col items-center border border-gray-700 hover:border-[var(--text-color)] p-3 md:p-4 rounded neon-glow-hover transition duration-300 transform hover:-translate-y-1 bg-[#111]/30">
+                    <span>
+                        <i class="devicon-mysql-original colored"></i>
 
-                    <div class="mx-2">
+                    </span>
+                    <p class="font-semibold mt-1 text-sm md:text-base">MySQL</p>
+                </div>
+                <div
+                    class="flex flex-col items-center border border-gray-700 hover:border-[var(--text-color)] p-3 md:p-4 rounded neon-glow-hover transition duration-300 transform hover:-translate-y-1 bg-[#111]/30">
+                    <span>
+                        <i class="devicon-mongodb-plain colored"></i>
 
-                        <p class="heading">Reddit</p>
-                        <p class="title pt-1">
-                                <span class="icon is-medium">
-                                    <i class="fab fa-reddit"></i>
-                                </span>
-                        </p>
-                    </div>
-                </a>
+                    </span>
+                    <p class="font-semibold mt-1 text-sm md:text-base">MongoDB</p>
+                </div>
+                <div
+                    class="flex flex-col items-center border border-gray-700 hover:border-[var(--text-color)] p-3 md:p-4 rounded neon-glow-hover transition duration-300 transform hover:-translate-y-1 bg-[#111]/30">
+                    <span><i class="devicon-docker-plain colored"></i>
+                    </span>
+                    <p class="font-semibold mt-1 text-sm md:text-base">Docker</p>
+                </div>
             </div>
         </div>
-    </div>
+    </section>
 
-    <div class="columns mt-5 pt-4 pb-3">
-        <div class="column is-offset-5">
-            <a class="navbar-item" href="index.html">
-                <img src="img/nav-header.png" alt="Akassharjun's Portfolio">
-            </a>
-            <!--            <a class="navbar-item pl-5">-->
-            <!--                <span style="font-size: 14px; color:white"><strong>2020 © All rights reserved</strong></span>-->
-            <!--            </a>-->
+    <section id="work" class="py-16 px-4 md:px-12 bg-[#0f0f0f]">
+        <div class="container mx-auto">
+            <h2 class="text-2xl sm:text-3xl lg:text-4xl font-bold mb-10 text-center md:text-left">
+                <span class="text-gray-500">cat</span> /var/log/work_history.log
+            </h2>
+            <div class="relative border-l-2 border-[var(--border-color)]/50 pl-6 md:pl-12 space-y-10 max-w-5xl mx-auto">
+                <div class="relative">
+                    <div
+                        class="absolute -left-[38px] md:-left-[56px] top-1 w-3 h-3 bg-[var(--text-color)] rounded-full border-2 border-[#0f0f0f] shadow-md shadow-[var(--text-color)]/50">
+                    </div>
+                    <p class="text-base md:text-lg font-bold"><span class="text-gray-500">[Feb 25 - Pres]</span> Mentor
+                        @ <span class="text-white">The University of Melbourne</span></p>
+                    <div class="pl-4 mt-1 text-xs md:text-sm text-gray-400 space-y-1">
+                        <p class="break-words">- Supervising Master of IT software projects as they learn to work in a simulated industry setting.</p>
+                        <p class="break-words">- Regular check‑in meeting with students to review and provide feedback on their work.</p>
+                        <p class="break-words">- Marking and providing constructive feedback on improvements and the work done.</p>
+                    </div>
+                </div>
+                <div class="relative">
+                    <div
+                        class="absolute -left-[38px] md:-left-[56px] top-1 w-3 h-3 bg-[var(--text-color)] rounded-full border-2 border-[#0f0f0f] shadow-md shadow-[var(--text-color)]/50">
+                    </div>
+                    <p class="text-base md:text-lg font-bold"><span class="text-gray-500">[Jul 22 - Jul 24]</span> SWE @
+                        <span class="text-white">Circles.Life</span>
+                    </p>
+                    <div class="pl-4 mt-1 text-xs md:text-sm text-gray-400 space-y-1">
+                        <p class="break-words">- Led development of core Telco services including port management, subscriptions, and customer portals.</p>
+                        <p class="break-words">- Delivered key features like Automatic Recharging and International Roaming with 99.9% reliability.</p>
+                        <p class="break-words">- Improved CI/CD pipeline performance by 10 minutes through Node.js v8 to v18 upgrade and legacy code removal.</p>
+                        <p class="break-words">- Automated L2 support workflows, reducing manual interventions and human error by 80%.</p>
+                        <p class="break-words">- Enhanced system reliability through distributed tracing, improved logging, and API idempotency.</p>
+                        <p class="break-words">- Maintained SLA targets through effective on-call incident response and root cause analysis.</p>
+                    </div>
+                </div>
+                <div class="relative">
+                    <div
+                        class="absolute -left-[38px] md:-left-[56px] top-1 w-3 h-3 bg-[var(--text-color)] rounded-full border-2 border-[#0f0f0f] shadow-md shadow-[var(--text-color)]/50">
+                    </div>
+                    <p class="text-base md:text-lg font-bold"><span class="text-gray-500">[Jun 20 - Jul 22]</span>
+                        ASE (Part-Time) @ <span class="text-white">ThinkSmart</span></p>
+                    <div class="pl-4 mt-1 text-xs md:text-sm text-gray-400 space-y-1">
+                        <p class="break-words">- Maintained and developed new features for core services such as ordering, promotion, and payment for EatMealFirst V2. </p>
+                        <p class="break-words">- Engineered the solution for enabling users to order from multiple merchants with multiple delivery locations. </p>
+                        <p class="break-words">-  Worked on a compensation scheme to reward riders during the difficult times of Sri Lanka's gasoline crisis. </p>
+                    </div>
+                </div>
+                <div class="relative">
+                    <div
+                        class="absolute -left-[38px] md:-left-[56px] top-1 w-3 h-3 bg-[var(--text-color)] rounded-full border-2 border-[#0f0f0f] shadow-md shadow-[var(--text-color)]/50">
+                    </div>
+                    <p class="text-base md:text-lg font-bold"><span class="text-gray-500">[Jun 20 - Jul 22]</span>
+                        Intern @ <span class="text-white">ThinkSmart</span></p>
+                    <div class="pl-4 mt-1 text-xs md:text-sm text-gray-400 space-y-1">
+                        <p class="break-words">- Assisted in the migration from EMF V1, a NodeJS monolithic application, to EMF V2, consisting of Golang microservices. </p>
+                        <p class="break-words">- Rewritten the core business logic with Golang, employing a microservices architecture, and substantially improved the performance of the backend services. </p>
+                        <p class="break-words">- Improved the generation and emailing of invoices to users in EatMealFirst V1. </p>
+                    </div>
+                </div>
+            </div>
+            <!-- <p class="text-center text-gray-400 mt-8 text-sm break-words">// Full history available via 'work' command
+                in the terminal.</p> -->
         </div>
-    </div>
-</footer>
+    </section>
+
+    <section id="projects" class="py-16 px-4 md:px-12 bg-[#1a1a1a]">
+        <div class="container mx-auto">
+            <h2 class="text-2xl sm:text-3xl lg:text-4xl font-bold mb-10 text-center md:text-left">
+                <span class="text-gray-500">ls</span> ./projects
+            </h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
+                <div
+                    class="border border-dashed border-gray-600 hover:border-[var(--text-color)] p-4 md:p-5 rounded bg-[#111]/30 hover:bg-[#1f1f1f]/50 transition duration-300 transform hover:-translate-y-1">
+                    <p class="font-bold text-[var(--text-color)] mb-2 text-base md:text-lg">ShapleyValueFL</p>
+                    <p class="text-sm text-gray-300 mb-3 break-words">A pip library for computing the marginal contribution for each client in a Federated Learning environment.</p>
+                    <p class="text-xs text-gray-500 mb-4">Tech: Python, FastAPI, RabbitMQ, Flutter</p>
+                    <a href=https://github.com/akassharjun/ShapleyValueFL" target="_blank"
+                        rel="noopener noreferrer"
+                        class="inline-flex items-center text-sm text-blue-400 hover:underline break-all">
+                        <svg class="w-4 h-4 mr-1 flex-shrink-0" fill="currentColor" viewBox="0 0 24 24"
+                            aria-hidden="true">
+                            <path fill-rule="evenodd"
+                                d="M12 2C6.477 2 2 6.477 2 12c0 4.418 2.865 8.165 6.839 9.489.5.092.682-.217.682-.483 0-.237-.009-.868-.014-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.03 1.531 1.03.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.026 2.747-1.026.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.942.359.309.678.92.678 1.856 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.001 10.001 0 0022 12c0-5.523-4.477-10-10-10z"
+                                clip-rule="evenodd" />
+                        </svg>
+                        View Source
+                    </a>
+                </div>
+                <div
+                    class="border border-dashed border-gray-600 hover:border-[var(--text-color)] p-4 md:p-5 rounded bg-[#111]/30 hover:bg-[#1f1f1f]/50 transition duration-300 transform hover:-translate-y-1">
+                    <p class="font-bold text-[var(--text-color)] mb-2 text-base md:text-lg">Speculo (Group Project)</p>
+                    <p class="text-sm text-gray-300 mb-3 break-words">Speculo is an open source platform that utilizes a DCIGN for indexing faces found in a video footage.</p>
+                    <p class="text-xs text-gray-500 mb-4">Tech: Python, NodeJS, Typescript</p>
+                    <a href="https://ieeexplore.ieee.org/document/9298340/"class="text-xs text-blue-400 hover:underline">See Publication</a>
+                </div>
+                <div
+                    class="border border-dashed border-gray-600 hover:border-[var(--text-color)] p-4 md:p-5 rounded bg-[#111]/30 hover:bg-[#1f1f1f]/50 transition duration-300 transform hover:-translate-y-1">
+                    <p class="font-bold text-[var(--text-color)] mb-2 text-base md:text-lg">Flutter Screen Scaler</p>
+                    <p class="text-sm text-gray-300 mb-3 break-words">Scale widgets in Flutter using percentages just like in HTML!
+                    </p>
+                    <p class="text-xs text-gray-500 mb-4">Tech: Dart</p>
+                    <a href=https://github.com/akassharjun/flutter-screen-scaler" target="_blank"
+                        rel="noopener noreferrer"
+                        class="inline-flex items-center text-sm text-blue-400 hover:underline break-all">
+                        <svg class="w-4 h-4 mr-1 flex-shrink-0" fill="currentColor" viewBox="0 0 24 24"
+                            aria-hidden="true">
+                            <path fill-rule="evenodd"
+                                d="M12 2C6.477 2 2 6.477 2 12c0 4.418 2.865 8.165 6.839 9.489.5.092.682-.217.682-.483 0-.237-.009-.868-.014-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.03 1.531 1.03.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.026 2.747-1.026.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.942.359.309.678.92.678 1.856 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.001 10.001 0 0022 12c0-5.523-4.477-10-10-10z"
+                                clip-rule="evenodd" />
+                        </svg>
+                        View Source
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="volunteer" class="py-16 px-4 md:px-12 bg-[#0f0f0f]">
+        <div class="container mx-auto max-w-3xl">
+            <h2 class="text-2xl sm:text-3xl lg:text-4xl font-bold mb-10 text-center md:text-left">
+                <span class="text-gray-500">grep </span>"Volunteer|Community"
+            </h2>
+            <div class="space-y-6">
+                <div class="flex items-start space-x-3">
+                    <span class="text-[var(--text-color)] text-lg font-bold pt-1 flex-shrink-0">✔</span>
+                    <div>
+                        <p class="font-semibold text-sm md:text-base break-words">President @ IEEE Computer Society of
+                            IIT <span class="text-gray-500">(19-20)</span></p>
+                        <p class="text-xs md:text-sm text-gray-400 pl-4 break-words"><span
+                                class="text-gray-500">></span> Organised CodeRally, a free‑for‑all coding competition for undergraduates and keen programmers. The idea behind this was to encourage students to hone their programming skills, solve challenging problem sets, and get a chance to interact with their peers. The event was a success with over 60 participants from different universities.</p>
+                    </div>
+                </div>
+                <div class="flex items-start space-x-3">
+                    <span class="text-[var(--text-color)] text-lg font-bold pt-1 flex-shrink-0">✔</span>
+                    <div>
+                        <p class="font-semibold text-sm md:text-base break-words">IT Director @ Rotaract Club of IIT
+                            <span class="text-gray-500">(19)</span>
+                        </p>
+                        <p class="text-xs md:text-sm text-gray-400 pl-4 break-words"><span
+                                class="text-gray-500">></span> Developed the main website for the IIT Game Festival, an annually organised gaming competition between different universities.</p>
+                        <p class="text-xs md:text-sm text-gray-400 pl-4 break-words"><span
+                                class="text-gray-500">></span> Developed a counter application for Hotdog Showdown, a food eating challenge organised to raise funds for charitable donations.</p>
+                    </div>
+                </div>
+                <div class="flex items-start space-x-3">
+                    <span class="text-[var(--text-color)] text-lg font-bold pt-1 flex-shrink-0">✔</span>
+                    <div>
+                        <p class="font-semibold text-sm md:text-base break-words">Technical Volunteer @ Google Developer Group of Sri Lanka
+                            <span class="text-gray-500">(19)</span>
+                        </p>
+                        <p class="text-xs md:text-sm text-gray-400 pl-4 break-words"><span
+                                class="text-gray-500">></span>Developed the official application for DevFest Sri Lanka 2019 to track and view more information about the agenda of the event.</p>
+                    </div>
+                </div>
+                <div class="flex items-start space-x-3">
+                    <span class="text-[var(--text-color)] text-lg font-bold pt-1 flex-shrink-0">✔</span>
+                    <div>
+                        <p class="font-semibold text-sm md:text-base break-words">Speaker @ Hacktoberfest
+                            <span class="text-gray-500">(19)</span>
+                        </p>
+                        <p class="text-xs md:text-sm text-gray-400 pl-4 break-words"><span
+                                class="text-gray-500">></span>Volunteered to give a talk on "How to get started with Flutter" for the school students at the Richmond College.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="contact-section" class="py-16 px-4 md:px-12 bg-[#1a1a1a]">
+        <div class="container mx-auto max-w-xl text-center">
+            <h2 class="text-2xl sm:text-3xl lg:text-4xl font-bold mb-6">
+                <span class="text-gray-500">echo</span> $CONTACT_INFO
+            </h2>
+            <p class="text-base md:text-lg mb-8 text-gray-300 break-words">
+                Interested in collaborating or have a question? Feel free to reach out!
+            </p>
+            <div class="space-y-4 text-sm md:text-base">
+                <p class="break-words">
+                    <span class="font-semibold text-gray-400">Email:</span>
+                    <a href="mailto:akassharjun@gmail.com"
+                        class="text-blue-400 hover:underline ml-2 break-all">Email me!</a>
+                </p>
+                <p class="break-words">
+                    <span class="font-semibold text-gray-400">LinkedIn:</span>
+                    <a href="https://linkedin.com/in/akassharjun" target="_blank" rel="noopener noreferrer"
+                        class="text-blue-400 hover:underline ml-2 break-all">linkedin.com/in/akassharjun</a>
+                </p>
+                <p class="break-words">
+                    <span class="font-semibold text-gray-400">GitHub:</span>
+                    <a href="https://github.com/akassharjun" target="_blank" rel="noopener noreferrer"
+                        class="text-blue-400 hover:underline ml-2 break-all">github.com/akassharjun</a>
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <footer id="main-footer"
+        class="py-6 px-4 text-center text-xs text-gray-500 border-t border-[#2a2a2a]/50 bg-[#0f0f0f]">
+        <span class="text-gray-600 break-words">visitor@portfolio</span><span class="text-gray-600">:~$ echo "Built by
+            Akassharjun Shanmugarajah & Gemini Pro 2.5 | © <span id="visual-year"></span>"</span>
+    </footer>
+
+
+    <script>
+        // --- DOM Element References ---
+        const terminalOutput = document.getElementById('terminal-output');
+        const terminalInput = document.getElementById('terminal-input');
+        const visualYearSpan = document.getElementById('visual-year');
+
+        // --- State ---
+        let terminalInitialized = false;
+
+        // --- Set Year ---
+        const currentYear = new Date().getFullYear();
+        if (visualYearSpan) visualYearSpan.textContent = currentYear;
+
+        // --- Terminal Logic ---
+        const commandHistory = [];
+        let historyIndex = -1;
+        let currentCommand = '';
+        const TYPING_SPEED = 5; // Adjust typing speed if desired
+
+        // --- Data for Terminal Commands (Shortened for brevity in this example) ---
+        const helpData = `<span class="text-white">Available commands:</span>\n  <span class="text-yellow-400">help</span>, <span class="text-yellow-400">about</span>, <span class="text-yellow-400">skills</span>, <span class="text-yellow-400">work</span>, <span class="text-yellow-400">projects</span>, <span class="text-yellow-400">volunteer</span>, <span class="text-yellow-400">education</span>, <span class="text-yellow-400">contact</span>, <span class="text-yellow-400">banner</span>, <span class="text-yellow-400">date</span>, <span class="text-yellow-400">echo [text]</span>, <span class="text-yellow-400">clear</span>, <span class="text-yellow-400">sudo [cmd]</span>, <span class="text-yellow-400">theme</span>\n<span class="text-gray-400">Use ArrowUp/Down for history.</span>`;
+        const aboutData = `<span class="text-white font-bold">Akassharjun Shanmugarajah</span>\nSoftware Engineer, Melbourne, AU.\nMaster of Software Engineering @ The University of Melbourne.\nBachelor of Science (Computer Sicnece) @ Informatics Institute of Technology (affiliated with The Univeristy of Westminster).\nExperienced Back-end Engineer (Go, Node.js, K8s).`;
+        const skillsData = `<span class="text-white font-bold">Skills:</span> Go, NodeJS, Python, TS, K8s, Docker, Redis, Microservices, REST, gRPC, CI/CD, Git, SQL, NoSQL, LaTeX, Jenkins, Jira`;
+        const workData = `<span class="text-white font-bold">Experience:</span>\n[Current] Mentor @ The University of Melbourne\n[22-24] SWE @ Circles.Life\n[21-22] ASE (Part-Time) @ ThinkSmart\n[20-21] Intern @ ThinkSmart`;
+        const projectsData = `<span class="text-white font-bold">Projects:</span> PeaceMaker (FYP), ShapleyValueFL, Speculo (Group), ChariLake)`;
+        const volunteerData = `<span class="text-white font-bold">Volunteering:</span>\nIEEE CS President\nRotaract IT Director\nMozilla Campus Club Student Director\nGDG Technical Volunteer\nHacktoberfest Volunteer Speaker)`;
+        const educationData = `<span class="text-white font-bold">Education:</span>\nMaster of Software Engineering @ The University of Melbourne.\nBachelor of Science (Computer Sicnece) @ Informatics Institute of Technology (affiliated with The Univeristy of Westminster)`;
+        const contactData = `LinkedIn: <a href="https://linkedin.com/in/akassharjun" target="_blank">linkedin.com/in/akassharjun</a>\nGitHub: <a href="https://github.com/akassharjun" target="_blank">github.com/akassharjun</a>`;
+        const bannerData = `<pre class="text-[var(--text-color)]" style="font-size: clamp(4px, 1.5vw, 9px); line-height: 1;"> ████k. ███  ███  ███\n ██ ████ ███  ███  ███\n ██  ██ ███ ████k ███████ ███ ███  █████ ███████ ██████\n ██  ██ ███ ██ ██ ███  ██ ███ ███ ███ ███ ███ ██ ███ ██\n ██  ██ ███ █████ ███  ██ ███ ███ ███    ███ ██ ███\n ██ ████ ███ ██  ██ ███  ██ ███ ███ ███ ███ ██ ██████\n ████k' ███ ████k ██████  ███████ █████ ██████  ███\n</pre><span class="text-white">Welcome! Type '<span class="text-yellow-400">help</span>' for commands.</span>`;
+
+
+        // --- Terminal Helper Functions ---
+        function typeOutput(htmlContent, onComplete = null) {
+            const outputLine = document.createElement('div');
+            outputLine.style.marginBottom = '0.25rem';
+            // IMPORTANT: Sanitize or carefully construct HTML if content can be user-influenced
+            // For this portfolio, assuming data is safe.
+            outputLine.innerHTML = ''; // Clear potential placeholders
+            terminalOutput.appendChild(outputLine);
+
+            const preparedHtml = htmlContent.replace(/(?<!<pre.*?>)\n(?!.*?<\/pre>)/g, '<br>');
+            const tempContainer = document.createElement('div');
+            tempContainer.innerHTML = preparedHtml;
+            const nodesToType = Array.from(tempContainer.childNodes);
+            let isFinished = false;
+
+            function typeNode() {
+                if (nodesToType.length === 0) {
+                    if (!isFinished) {
+                        isFinished = true;
+                        terminalOutput.scrollTop = terminalOutput.scrollHeight; // Scroll down after finishing
+                        if (onComplete) onComplete();
+                    }
+                    return;
+                }
+                const currentNode = nodesToType.shift();
+                if (currentNode.nodeType === Node.TEXT_NODE) {
+                    let text = currentNode.textContent; let charIndex = 0;
+                    const textSpan = document.createElement('span'); outputLine.appendChild(textSpan);
+                    function typeChar() {
+                        if (charIndex < text.length) {
+                            textSpan.textContent += text.charAt(charIndex); charIndex++;
+                            // Scroll during typing for better UX
+                            terminalOutput.scrollTop = terminalOutput.scrollHeight;
+                            setTimeout(typeChar, TYPING_SPEED);
+                        } else {
+                            typeNode();
+                        }
+                    } typeChar();
+                } else {
+                    // Append HTML elements directly
+                    outputLine.appendChild(currentNode.cloneNode(true));
+                    // Ensure scroll updates even when adding non-text nodes
+                    terminalOutput.scrollTop = terminalOutput.scrollHeight;
+                    typeNode();
+                }
+            }
+            // Ensure initial scroll update if content is added immediately
+            terminalOutput.scrollTop = terminalOutput.scrollHeight;
+            typeNode();
+        }
+
+        function appendCommand(commandText) {
+            const outputLine = document.createElement('div');
+            const escapedCommand = commandText.replace(/&/g, "&").replace(/</g, "<").replace(/>/g, ">");
+            const promptElement = terminalInput.previousElementSibling;
+            const promptText = promptElement ? promptElement.textContent : '> ';
+            outputLine.innerHTML = `<span class="text-gray-500">${promptText}</span> ${escapedCommand}`;
+            terminalOutput.appendChild(outputLine);
+            // Scroll down immediately after appending the command
+            terminalOutput.scrollTop = terminalOutput.scrollHeight;
+        }
+
+
+        // --- Terminal Command Processor ---
+        function processCommand(command) {
+            const trimmedCommand = command.trim();
+            if (trimmedCommand === '') { appendCommand(''); typeOutput(' '); return; }
+            appendCommand(trimmedCommand);
+            if (commandHistory.length === 0 || commandHistory[commandHistory.length - 1] !== trimmedCommand) { commandHistory.push(trimmedCommand); }
+            historyIndex = commandHistory.length;
+            const args = trimmedCommand.toLowerCase().split(' ');
+            const cmd = args[0];
+            let outputData = ''; let foundCommand = true;
+            switch (cmd) {
+                case 'help': outputData = helpData; break;
+                case 'about': outputData = aboutData; break;
+                case 'skills': outputData = skillsData; break; // Provide full data here if not shortened above
+                case 'work': case 'experience': outputData = workData; break; // Provide full data here
+                case 'projects': case 'portfolio': outputData = projectsData; break; // Provide full data here
+                case 'volunteer': case 'clubs': outputData = volunteerData; break; // Provide full data here
+                case 'education': case 'edu': outputData = educationData; break;
+                case 'contact': case 'socials': outputData = contactData; break;
+                case 'banner': outputData = bannerData; break;
+                case 'date': outputData = `Current time: ${new Date().toLocaleString()}`; break;
+                case 'clear':
+                    terminalOutput.innerHTML = ''; // Clear immediately
+                    // Re-add banner after clearing
+                    setTimeout(() => {
+                        typeOutput(bannerData, () => { typeOutput(' '); });
+                    }, 50);
+                    return; // Exit immediately
+                case 'echo': const textToEcho = command.trim().split(' ').slice(1).join(' '); const escapedEcho = textToEcho.replace(/&/g, "&").replace(/</g, "<").replace(/>/g, ">"); outputData = escapedEcho || '<span class="text-gray-500">(empty)</span>'; break;
+                case 'sudo': const sudoCmd = args.slice(1).join(' '); if (sudoCmd === 'make coffee' || sudoCmd === 'make tea') outputData = `Password: ********\nBrewing virtual ${sudoCmd.split(' ')[1]}... ${sudoCmd.includes('coffee') ? '☕' : '🍵'}`; else if (sudoCmd === 'reboot') outputData = `Password: ********\nRebooting... just kidding!`; else outputData = `Password: ********\nsudo: Sorry, user 'user' may not run sudo.`; break;
+                case 'theme': const termContainer = document.getElementById('terminal-container'); if (termContainer.style.filter) { termContainer.style.filter = ''; outputData = 'Default theme activated.'; } else { termContainer.style.filter = 'invert(1) hue-rotate(180deg)'; outputData = 'Inverted theme activated.'; } break;
+                default: foundCommand = false; const escapedCmd = cmd.replace(/</g, "<").replace(/>/g, ">"); outputData = `bash: command not found: <span class="text-red-500">${escapedCmd}</span>\nType '<span class="text-yellow-400">help</span>' for available commands.`;
+            }
+            // Type output and add blank line after
+            typeOutput(outputData, () => { typeOutput(' '); });
+        }
+
+        // --- Terminal Event Listeners ---
+        terminalInput.addEventListener('keydown', (e) => {
+            if (e.key === 'Enter') { e.preventDefault(); const command = terminalInput.value; processCommand(command); terminalInput.value = ''; currentCommand = ''; }
+            else if (e.key === 'ArrowUp') { e.preventDefault(); if (commandHistory.length > 0) { if (historyIndex === commandHistory.length) { currentCommand = terminalInput.value; } if (historyIndex > 0) { historyIndex--; terminalInput.value = commandHistory[historyIndex]; setTimeout(() => terminalInput.selectionStart = terminalInput.selectionEnd = terminalInput.value.length, 0); } } }
+            else if (e.key === 'ArrowDown') { e.preventDefault(); if (historyIndex < commandHistory.length) { if (historyIndex < commandHistory.length - 1) { historyIndex++; terminalInput.value = commandHistory[historyIndex]; } else { historyIndex = commandHistory.length; terminalInput.value = currentCommand; } setTimeout(() => terminalInput.selectionStart = terminalInput.selectionEnd = terminalInput.value.length, 0); } }
+            else if (e.key === 'Tab') {
+                e.preventDefault();
+                const currentVal = terminalInput.value.toLowerCase();
+                // Make sure 'commands' array is complete
+                const commands = ['help', 'about', 'skills', 'work', 'projects', 'volunteer', 'education', 'publications', 'contact', 'banner', 'date', 'clear', 'echo', 'sudo', 'theme'];
+                const potentialMatches = commands.filter(c => c.startsWith(currentVal) && currentVal.length > 0); // Add check for non-empty input
+                if (potentialMatches.length === 1) { terminalInput.value = potentialMatches[0]; setTimeout(() => terminalInput.selectionStart = terminalInput.selectionEnd = terminalInput.value.length, 0); }
+                else if (potentialMatches.length > 1) { appendCommand(terminalInput.value); typeOutput(potentialMatches.join('  ')); typeOutput(' '); }
+            }
+        });
+        terminalOutput.addEventListener('click', () => { terminalInput.focus(); }); // Focus input on output click
+
+        // --- Global runCommand function (for links) ---
+        function runCommand(command) {
+            // Optional: Add command to input visually?
+            // terminalInput.value = command;
+            processCommand(command);
+            terminalInput.focus();
+            currentCommand = ''; // Reset history buffer
+        }
+
+        // --- Terminal Initializer ---
+        function initializeTerminal() {
+            if (terminalInitialized) return;
+            // Ensure output area is initially empty or contains only the banner
+            terminalOutput.innerHTML = ''; // Start clean
+            typeOutput(bannerData, () => {
+                typeOutput(' '); // Add initial empty line
+                terminalInput.focus(); // Focus input after banner
+            });
+            terminalInitialized = true;
+        }
+
+        // --- Initial Page Load ---
+        initializeTerminal();
+
+        // --- Smooth Scroll for Nav Links ---
+        document.querySelectorAll('#top-nav a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const targetId = this.getAttribute('href');
+                const targetElement = document.querySelector(targetId);
+                if (targetElement) {
+                    const navHeight = document.getElementById('top-nav').offsetHeight;
+                    const elementPosition = targetElement.getBoundingClientRect().top;
+                    const offsetPosition = elementPosition + window.pageYOffset - navHeight;
+                    window.scrollTo({ top: offsetPosition, behavior: 'smooth' });
+                }
+            });
+        });
+
+        // Add this to your existing script section
+        document.addEventListener('DOMContentLoaded', function() {
+            const mobileMenuButton = document.getElementById('mobile-menu-button');
+            const mobileMenu = document.getElementById('mobile-menu');
+
+            mobileMenuButton.addEventListener('click', function() {
+                mobileMenu.classList.toggle('hidden');
+            });
+
+            // Close mobile menu when clicking a link
+            const mobileLinks = mobileMenu.querySelectorAll('a');
+            mobileLinks.forEach(link => {
+                link.addEventListener('click', function() {
+                    mobileMenu.classList.add('hidden');
+                });
+            });
+
+            // Close mobile menu when clicking outside
+            document.addEventListener('click', function(event) {
+                if (!mobileMenu.contains(event.target) && !mobileMenuButton.contains(event.target)) {
+                    mobileMenu.classList.add('hidden');
+                }
+            });
+        });
+
+    </script>
 
 </body>
 
